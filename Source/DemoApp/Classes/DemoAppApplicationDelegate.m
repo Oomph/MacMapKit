@@ -30,6 +30,8 @@
     MKReverseGeocoder *reverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate: coordinate];
     reverseGeocoder.delegate = self;
     [reverseGeocoder start];
+    
+    coreLocationPins = [[NSMutableArray array] retain];
 }
 
 - (IBAction)setMapType:(id)sender
@@ -49,7 +51,18 @@
     MKPointAnnotation *pin = [[[MKPointAnnotation alloc] init] autorelease];
     pin.coordinate = [mapView centerCoordinate];
     pin.title = self.pinTitle;
+    
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:[mapView centerCoordinate] radius:300];
+    
+    NSMutableDictionary *coreLocationPin = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                            pin, @"pin",
+                                            circle, @"circle",
+                                            nil];
+    
+    [coreLocationPins addObject:coreLocationPin];
+    
     [mapView addAnnotation:pin];
+    [mapView addOverlay:circle];
 }
 
 - (IBAction)searchAddress:(id)sender
@@ -220,6 +233,41 @@
 - (void)mapView:(MKMapView *)aMapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
     //NSLog(@"mapView: %@ annotationView: %@ didChangeDragState:%d fromOldState:%d", aMapView, annotationView, newState, oldState);
+    
+    if (newState ==  MKAnnotationViewDragStateEnding || newState == MKAnnotationViewDragStateNone)
+    {
+        // create a new circle view
+        MKPointAnnotation *pinAnnotation = annotationView.annotation;
+        for (NSMutableDictionary *pin in coreLocationPins)
+        {
+            if ([[pin objectForKey:@"pin"] isEqual: pinAnnotation])
+            {
+                // found the pin.
+                MKCircle *circle = [pin objectForKey:@"circle"];
+                CLLocationDistance pinCircleRadius = circle.radius;
+                [aMapView removeOverlay:circle];
+                
+                circle = [MKCircle circleWithCenterCoordinate:pinAnnotation.coordinate radius:pinCircleRadius];
+                [pin setObject:circle forKey:@"circle"];
+                [aMapView addOverlay:circle];
+            }
+        }
+    }
+    else {
+        // find old circle view and remove it
+        MKPointAnnotation *pinAnnotation = annotationView.annotation;
+        for (NSMutableDictionary *pin in coreLocationPins)
+        {
+            if ([[pin objectForKey:@"pin"] isEqual: pinAnnotation])
+            {
+                // found the pin.
+                MKCircle *circle = [pin objectForKey:@"circle"];
+                [aMapView removeOverlay:circle];
+            }
+        }
+    }
+
+    
     //MKPointAnnotation *annotation = annotationView.annotation;
     //NSLog(@"annotation = %@", annotation);
     
