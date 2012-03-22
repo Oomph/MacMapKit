@@ -672,4 +672,9 @@
     return WebDragDestinationActionNone;
 }
 
+- (void)webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WebFrame *)frame
+{
+    NSLog(@"alert: %@", message);
+}
+
 @end
