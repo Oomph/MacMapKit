@@ -50,6 +50,7 @@
 
 - (void)close
 {
+	[self setDelegate:nil];
 	[webView close];
 	[[webView windowScriptObject] setValue:nil forKey:@"WindowScriptObject"];
 	[[webView windowScriptObject] setValue:nil forKey:@"MKMapView"];
