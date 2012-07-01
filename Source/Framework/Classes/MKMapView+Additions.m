@@ -7,6 +7,7 @@
 //
 
 #import "MKMapView+Additions.h"
+#import <WebKit/WebKit.h>
 
 
 @implementation MKMapView (Additions)
@@ -44,6 +45,14 @@
     }
     NSString *stringValue = [sender stringValue];
     [self showAddress:stringValue];
+}
+
+
+- (void)close
+{
+	[webView close];
+	[[webView windowScriptObject] setValue:nil forKey:@"WindowScriptObject"];
+	[[webView windowScriptObject] setValue:nil forKey:@"MKMapView"];
 }
 
 @end

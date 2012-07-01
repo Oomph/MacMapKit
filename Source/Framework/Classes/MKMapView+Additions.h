@@ -20,4 +20,6 @@
 // NSControl
 - (void)takeStringValueFrom:(id)sender;
 
+- (void)close;
+
 @end
