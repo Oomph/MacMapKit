@@ -24,7 +24,14 @@
     [webView setFrameLoadDelegate:self];
     [webView setUIDelegate:self];
     [webView setMaintainsBackForwardList:NO];
-    
+	// Let's set a custom user agent, as it looks like they're doing some type of UA checking on their end and that's breaking annotations on our end.
+	///[webView setCustomUserAgent:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"];
+	NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+	if (applicationName == nil)
+		applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
+	
+	[webView setCustomUserAgent:[NSString stringWithFormat:@"%@ AppleWebKit", applicationName]];
+	
     // Create the overlay data structures
     overlays = [[NSMutableArray array] retain];
     overlayViews = [[NSMapTable mapTableWithStrongToStrongObjects] retain];
