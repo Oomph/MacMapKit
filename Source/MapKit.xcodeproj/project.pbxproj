@@ -165,7 +165,7 @@
 		5F19A0481208F9260083FE72 /* Release Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Release Notes.rtf"; sourceTree = "<group>"; };
 		5F39D6FC12B5AB50001B32CD /* MKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWebView.h; sourceTree = "<group>"; };
 		5F39D6FD12B5AB50001B32CD /* MKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWebView.m; sourceTree = "<group>"; };
-		5F585A5C12110FE6005F437E /* TransparentPixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TransparentPixel.png; path = ../Framework/Resources/TransparentPixel.png; sourceTree = "<group>"; };
+		5F585A5C12110FE6005F437E /* TransparentPixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransparentPixel.png; sourceTree = "<group>"; };
 		5F585AAD121231B6005F437E /* Animations.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Animations.css; sourceTree = "<group>"; };
 		5F585AAE121231B6005F437E /* Stylesheet.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Stylesheet.css; sourceTree = "<group>"; };
 		5F6EF13511F13B0D0077E84F /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,6 +349,7 @@
 				5F76C89911F52DFA00713BBA /* MKPinAnnotationColorPurple.png */,
 				5F76C87F11F52BFC00713BBA /* MKPinAnnotationColorRed.png */,
 				5F76C82011F4F85E00713BBA /* MarkerTest.png */,
+				5F585A5C12110FE6005F437E /* TransparentPixel.png */,
 				5F84F10911F21B88008D3A32 /* MapKit.html */,
 				5F6EF18711F13FA40077E84F /* MapKit-Info.plist */,
 			);
@@ -440,7 +441,6 @@
 				5F87D82E131C825B00634ACD /* MapViewAdditions.css */,
 				5F6EF14C11F13B8A0077E84F /* DemoApp-Info.plist */,
 				5F6EF14311F13B4B0077E84F /* MainMenu.xib */,
-				5F585A5C12110FE6005F437E /* TransparentPixel.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -916,6 +916,7 @@
 				GCC_PREFIX_HEADER = DemoApp/DemoApp_Prefix.pch;
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -938,6 +939,7 @@
 				GCC_PREFIX_HEADER = DemoApp/DemoApp_Prefix.pch;
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
