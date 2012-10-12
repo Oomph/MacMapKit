@@ -18,6 +18,8 @@
     NSNumber *circleRadius;
     NSString *pinTitle;
     NSArray *pinNames;
+    
+    NSMutableArray *coreLocationPins;
 }
 
 @property (assign) IBOutlet NSWindow *window;

@@ -180,12 +180,12 @@
     
     if (oldValue == NO && showsUserLocation == YES)
     {
-	[self delegateWillStartLocatingUser];
-	// To be sure we get all of the delegate calls from CoreLocation, we have to recreate the manager.
-	// Unfortunately if you just call stop/start, it'll never resend the kCLErrorDenied error.
-	locationManager = [[CLLocationManager alloc] init];
-	locationManager.delegate = self;
-	locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+		[self delegateWillStartLocatingUser];
+		// To be sure we get all of the delegate calls from CoreLocation, we have to recreate the manager.
+		// Unfortunately if you just call stop/start, it'll never resend the kCLErrorDenied error.
+		locationManager = [[CLLocationManager alloc] init];
+		locationManager.delegate = self;
+		locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     }
     
     if (showsUserLocation)
@@ -198,14 +198,14 @@
         [self setUserLocationMarkerVisible: NO];
         [userLocation _setUpdating:NO];
         [locationManager stopUpdatingLocation];
-	[locationManager release];
-	locationManager = nil;
+		[locationManager release];
+		locationManager = nil;
         [userLocation _setLocation:nil];
     }
     
     if (oldValue == YES && showsUserLocation == NO)
     {
-	[self delegateDidStopLocatingUser];
+		[self delegateDidStopLocatingUser];
     }
 }
 

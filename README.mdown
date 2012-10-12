@@ -20,3 +20,4 @@ Licensing
 ----------
 MapKit for Mac is distributed under the BSD license. However, MapKit for Mac uses Google services to provide map data. Use of specific classes of this framework (and their associated interfaces) binds you to the Google Maps/Google Earth API terms of service. You can find these terms of service at [http://code.google.com/apis/maps/terms.html](http://code.google.com/apis/maps/terms.html).
 
+
