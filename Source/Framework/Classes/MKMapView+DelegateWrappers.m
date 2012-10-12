@@ -101,5 +101,49 @@
     }
 }
 
+- (void)delegateWillStartLoadingMap
+{
+    if (delegate && [delegate respondsToSelector:@selector(mapViewWillStartLoadingMap:)])
+    {
+        [delegate mapViewWillStartLoadingMap:self];
+    }
+}
+
+- (void)delegateDidFinishLoadingMap;
+{
+    if (delegate && [delegate respondsToSelector:@selector(mapViewDidFinishLoadingMap:)])
+    {
+        [delegate mapViewDidFinishLoadingMap:self];
+    }
+}
+
+- (void)delegateDidFailLoadingMapWithError:(NSError *)error
+{
+    if (delegate && [delegate respondsToSelector:@selector(mapViewDidFailLoadingMap:withError:)])
+    {
+        [delegate mapViewDidFailLoadingMap:self withError:error];
+    }
+}
+
+// MacMapKit additions
+- (void)delegateUserDidClickAndHoldAtCoordinate:(CLLocationCoordinate2D)coordinate;
+{
+    if (delegate && [delegate respondsToSelector:@selector(mapView:userDidClickAndHoldAtCoordinate:)])
+    {
+        [delegate mapView:self userDidClickAndHoldAtCoordinate:coordinate];
+    }
+
+}
+
+- (NSArray *)delegateContextMenuItemsForAnnotationView:(MKAnnotationView *)view
+{
+    NSArray *items = [NSArray array];
+    if (delegate && [delegate respondsToSelector:@selector(mapView:contextMenuItemsForAnnotationView:)])
+    {
+	items = [delegate mapView:self contextMenuItemsForAnnotationView:view];
+    }
+    return items;
+}
+
 
 @end

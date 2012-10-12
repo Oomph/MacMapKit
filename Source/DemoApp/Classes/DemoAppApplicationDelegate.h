@@ -11,7 +11,7 @@
 
 @class MKMapView;
 
-@interface DemoAppApplicationDelegate : NSObject <NSApplicationDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate> {
+@interface DemoAppApplicationDelegate : NSObject <NSApplicationDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate, MKGeocoderDelegate> {
     NSWindow *window;
     IBOutlet MKMapView *mapView;
     IBOutlet NSTextField *addressTextField;
@@ -30,5 +30,6 @@
 - (IBAction)addPin:(id)sender;
 - (IBAction)searchAddress:(id)sender;
 - (IBAction)demo:(id)sender;
+- (IBAction)addAdditionalCSS:(id)sender;
 
 @end

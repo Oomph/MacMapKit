@@ -1,33 +1,29 @@
 //
-//  MKReverseGeocoder.m
+//  MKGeocoder.m
 //  MapKit
 //
-//  Created by Rick Fillion on 7/24/10.
-//  Copyright 2010 Centrix.ca. All rights reserved.
+//  Created by Rick Fillion on 11-01-02.
+//  Copyright 2011 Centrix.ca. All rights reserved.
 //
 
 /*
- Note:  I'm not particularly proud of this class.  It was mostly coded at 1am with a "fuck, just get it working" attitude.
- Things that could use some fixing by someone who wants to use it seriously:
- - Every MKReverseGeocoder loads up a WebView instance.  Just to get access to javascript.  Change it to load one for everyone.
- - There's this weird issue where the window.MKReverseGeocoder object isn't ready when I want it.  That's why there's the rescheduling.
+ Note:  Read comments at the top of MKReverseGeocoder, as they apply here too.
  */
 
-#import "MKReverseGeocoder.h"
+#import "MKGeocoder.h"
 #import "JSON.h"
 #import "MKPlacemark+Private.h"
 
+@interface MKGeocoder (WebViewIntegration)
 
-@interface MKReverseGeocoder (WebViewIntegration)
-
-- (void)didSucceedWithAddress:(id)address;
+- (void)didSucceedWithResult:(NSString *)jsonEncodedGeocoderResult;
 - (void)didFailWithError:(NSString *)status;
 - (void)didReachQueryLimit;
 
 @end
 
 
-@interface MKReverseGeocoder (Private)
+@interface MKGeocoder (Private)
 
 - (void)createWebView;
 - (void)destroyWebView;
@@ -36,20 +32,20 @@
 @end
 
 
-@implementation MKReverseGeocoder
+@implementation MKGeocoder
 
 @synthesize delegate;
+@synthesize address;
 @synthesize coordinate;
-@synthesize placemark;
 @synthesize querying;
 
 + (NSString *) webScriptNameForSelector:(SEL)sel
 {
     NSString *name = nil;
     
-    if (sel == @selector(didSucceedWithAddress:))
+    if (sel == @selector(didSucceedWithResult:))
     {
-        name = @"didSucceedWithAddress";
+        name = @"didSucceedWithResult";
     }
     
     if (sel == @selector(didFailWithError:))
@@ -61,14 +57,14 @@
     {
 	name = @"didReachQueryLimit";
     }
-
+    
     
     return name;
 }
 
 + (BOOL)isSelectorExcludedFromWebScript:(SEL)aSelector
 {
-    if (aSelector == @selector(didSucceedWithAddress:))
+    if (aSelector == @selector(didSucceedWithResult:))
     {
         return NO;
     }
@@ -82,25 +78,38 @@
     {
 	return NO;
     }
-
+    
     return YES;
 }
 
 
-
-- (id)initWithCoordinate:(CLLocationCoordinate2D)aCoordinate
+- (id)initWithAddress:(NSString *)anAddress
 {
     if (self = [super init])
     {
         [self createWebView];
-        coordinate = aCoordinate;
+        address = [anAddress retain];
+        hasOriginatingCoordinate = NO;
     }
     return self;
 }
 
+- (id)initWithAddress:(NSString *)anAddress nearCoordinate:(CLLocationCoordinate2D)aCoordinate
+{
+    if (self = [super init])
+    {
+        [self createWebView];
+        address = [anAddress retain];
+        hasOriginatingCoordinate = YES;
+        originatingCoordinate = aCoordinate;
+    }
+    return self;
+}
+
+
 - (void)dealloc
 {
-    [placemark release];
+    [address release];
     [self destroyWebView];
     [super dealloc];
 }
@@ -112,9 +121,7 @@
         return;
     querying = YES;
     if (webViewLoaded)
-    {
         [self _start];
-    }
 }
 
 - (void)cancel
@@ -126,22 +133,26 @@
 
 #pragma mark WebViewIntegration
 
-- (void)didSucceedWithAddress:(NSString *)jsonAddress
+- (void)didSucceedWithResult:(NSString *)jsonEncodedGeocoderResult;
 {
-    //NSLog(@"didSucceedWithAddress: %@", jsonAddress);
+    //NSLog(@"didSucceedWithResult: %@", jsonEncodedGeocoderResult);
     if (!querying)
         return;
     
-    id result = [jsonAddress JSONValue];
-    MKPlacemark *aPlacemark = [[[MKPlacemark alloc] initWithGoogleGeocoderResult: result] autorelease];
-    placemark = [aPlacemark retain];
+    id result = [jsonEncodedGeocoderResult JSONValue];
+    MKPlacemark *aPlacemark = [[MKPlacemark alloc] initWithGoogleGeocoderResult: result];
+    coordinate = aPlacemark.coordinate;
+    [aPlacemark release];
     
-    if (delegate && [delegate respondsToSelector:@selector(reverseGeocoder:didFindPlacemark:)])
+    if (delegate && [delegate respondsToSelector:@selector(geocoder:didFindCoordinate:)])
     {
-        [delegate reverseGeocoder:self didFindPlacemark:self.placemark];
+        [delegate geocoder:self didFindCoordinate:self.coordinate];
     }
+
     querying = NO;
 }
+
+
 
 - (void)didFailWithError:(NSString *)domain
 {
@@ -152,9 +163,9 @@
     NSError *error = [NSError errorWithDomain:domain code:0 userInfo:nil];
     // TODO create error
     
-    if (delegate && [delegate respondsToSelector:@selector(reverseGeocoder:didFailWithError:)])
+    if (delegate && [delegate respondsToSelector:@selector(geocoder:didFailWithError:)])
     {
-        [delegate reverseGeocoder:self didFailWithError:error];
+        [delegate geocoder:self didFailWithError:error];
     }
     querying = NO;
 }
@@ -173,14 +184,14 @@
 - (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
 {
     //NSLog(@"didClearWindowObjet");
-    [windowScriptObject setValue:self forKey:@"MKReverseGeocoder"];
+    [windowScriptObject setValue:self forKey:@"MKGeocoder"];
 }
 
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
     //NSLog(@"didFinishLoad:");
-    [[webView windowScriptObject] setValue:self forKey:@"MKReverseGeocoder"];
+    [[webView windowScriptObject] setValue:self forKey:@"MKGeocoder"];
     webViewLoaded = YES;
     if (self.querying && [sender mainFrame] == frame)
     {
@@ -188,18 +199,16 @@
     }
 }
 
-
 #pragma mark Private
 
 - (void)createWebView
 {
-    // create it
     // TODO : make this suck less.
-    NSBundle *frameworkBundle = [NSBundle bundleForClass:[MKReverseGeocoder class]];
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:[MKGeocoder class]];
     NSString *indexPath = [frameworkBundle pathForResource:@"MapKit" ofType:@"html"];
     webView = [[WebView alloc] initWithFrame:NSZeroRect frameName:nil groupName:nil];
     [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:indexPath]]]; 
-    [[webView windowScriptObject] setValue:self forKey:@"MKReverseGeocoder"];
+    [[webView windowScriptObject] setValue:self forKey:@"MKGeocoder"];
     [webView setFrameLoadDelegate:self];
 }
 
@@ -212,14 +221,21 @@
 - (void)_start
 {
     //NSLog(@"start");
-    NSArray *args = [NSArray arrayWithObjects:
-                     [NSNumber numberWithDouble:coordinate.latitude],
-                     [NSNumber numberWithDouble:coordinate.longitude],
-                     self,
+    NSArray *args = nil;
+    if (hasOriginatingCoordinate)
+        args = [NSArray arrayWithObjects:
+                     self.address,
+                     [NSNumber numberWithDouble:originatingCoordinate.latitude],
+                     [NSNumber numberWithDouble:originatingCoordinate.longitude],
                      nil];
+    else {
+        args = [NSArray arrayWithObject: self.address];
+    }
+
+
     WebScriptObject *webScriptObject = [webView windowScriptObject];
     //NSLog(@"got webscriptobject");
-    id val = [webScriptObject callWebScriptMethod:@"reverseGeocode" withArguments:args];
+    id val = [webScriptObject callWebScriptMethod:@"geocode" withArguments:args];
     //NSLog(@"val = %@", val);
     if (!val)
     {

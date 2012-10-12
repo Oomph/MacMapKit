@@ -17,6 +17,7 @@
 @protocol MKMapViewDelegate;
 @class MKUserLocation;
 @class MKOverlayView;
+@class MKWebView;
 
 @interface MKMapView : NSView <CLLocationManagerDelegate, NSCoding> {    
     id <MKMapViewDelegate> delegate;
@@ -28,22 +29,22 @@
     NSMutableArray *selectedAnnotations;
     
 @private
-    WebView *webView;
+    MKWebView *webView;
     CLLocationManager *locationManager;
     BOOL hasSetCenterCoordinate;
     // Overlays
-    CFMutableDictionaryRef overlayViews;
-    CFMutableDictionaryRef overlayScriptObjects;
+    NSMapTable *overlayViews;
+    NSMapTable *overlayScriptObjects;
     // Annotations
-    CFMutableDictionaryRef annotationViews;
-    CFMutableDictionaryRef annotationScriptObjects;
+    NSMapTable *annotationViews;
+    NSMapTable *annotationScriptObjects;
 
     
 }
 @property (nonatomic, assign) id <MKMapViewDelegate> delegate;
 
 @property(nonatomic) MKMapType mapType;
-
+@property(nonatomic, readonly) MKUserLocation *userLocation;
 @property(nonatomic) MKCoordinateRegion region;
 @property(nonatomic) CLLocationCoordinate2D centerCoordinate;
 @property(nonatomic) BOOL showsUserLocation;
@@ -79,9 +80,11 @@
 - (void)selectAnnotation:(id < MKAnnotation >)annotation animated:(BOOL)animated;
 - (void)deselectAnnotation:(id < MKAnnotation >)annotation animated:(BOOL)animated;
 
-
-
-
+// Converting Map Coordinates
+- (NSPoint)convertCoordinate:(CLLocationCoordinate2D)coordinate toPointToView:(NSView *)view;
+- (CLLocationCoordinate2D)convertPoint:(CGPoint)point toCoordinateFromView:(NSView *)view;
+- (MKCoordinateRegion)convertRect:(CGRect)rect toRegionFromView:(NSView *)view;
+- (NSRect)convertRegion:(MKCoordinateRegion)region toRectToView:(NSView *)view;
 
 @end
 
@@ -123,5 +126,8 @@
 - (void)mapViewDidStopLocatingUser:(MKMapView *)mapView;
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState;
 
+// MacMapKit additions
+- (void)mapView:(MKMapView *)mapView userDidClickAndHoldAtCoordinate:(CLLocationCoordinate2D)coordinate;
+- (NSArray *)mapView:(MKMapView *)mapView contextMenuItemsForAnnotationView:(MKAnnotationView *)view;
 
 @end

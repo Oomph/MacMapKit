@@ -32,6 +32,15 @@
     [reverseGeocoder start];
     
     coreLocationPins = [[NSMutableArray array] retain];
+    
+    MKGeocoder *geocoderNoCoord = [[MKGeocoder alloc] initWithAddress:@"777 Corydon Ave, Winnipeg MB"];
+    geocoderNoCoord.delegate = self;
+    [geocoderNoCoord start];
+    
+    MKGeocoder *geocoderCoord = [[MKGeocoder alloc] initWithAddress:@"1250 St. James St" nearCoordinate:coordinate];
+    geocoderCoord.delegate = self;
+    [geocoderCoord start];
+    
 }
 
 - (IBAction)setMapType:(id)sender
@@ -99,6 +108,12 @@
 
 }
 
+- (IBAction)addAdditionalCSS:(id)sender
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"MapViewAdditions" ofType:@"css"];
+    [mapView performSelector:@selector(addStylesheetTag:) withObject:path afterDelay:1.0];
+}
+
 #pragma mark MKReverseGeocoderDelegate
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
@@ -109,6 +124,18 @@
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
 {
     //NSLog(@"MKReverseGeocoder didFailWithError: %@", error);
+}
+
+#pragma mark MKGeocoderDelegate
+
+- (void)geocoder:(MKGeocoder *)geocoder didFindCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    //NSLog(@"MKGeocoder found (%f, %f) for %@", coordinate.latitude, coordinate.longitude, geocoder.address);
+}
+
+- (void)geocoder:(MKGeocoder *)geocoder didFailWithError:(NSError *)error
+{
+    //NSLog(@"MKGeocoder didFailWithError: %@", error);
 }
 
 #pragma mark MapView Delegate
@@ -271,6 +298,22 @@
     //MKPointAnnotation *annotation = annotationView.annotation;
     //NSLog(@"annotation = %@", annotation);
     
+}
+
+// MacMapKit additions
+- (void)mapView:(MKMapView *)aMapView userDidClickAndHoldAtCoordinate:(CLLocationCoordinate2D)coordinate;
+{
+    //NSLog(@"mapView: %@ userDidClickAndHoldAtCoordinate: (%f, %f)", aMapView, coordinate.latitude, coordinate.longitude);
+    MKPointAnnotation *pin = [[[MKPointAnnotation alloc] init] autorelease];
+    pin.coordinate = coordinate;
+    pin.title = @"Hi.";
+    [mapView addAnnotation:pin];
+}
+
+- (NSArray *)mapView:(MKMapView *)mapView contextMenuItemsForAnnotationView:(MKAnnotationView *)view
+{
+    NSMenuItem *item = [[[NSMenuItem alloc] initWithTitle:@"Delete It" action:@selector(delete:) keyEquivalent:@""] autorelease];
+    return [NSArray arrayWithObject:item];
 }
 
 

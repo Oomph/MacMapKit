@@ -14,11 +14,16 @@
 - (void)setUserLocationMarkerVisible:(BOOL)visible;
 - (void)updateUserLocationMarkerWithLocaton:(CLLocation *)location;
 - (void)updateOverlayZIndexes;
+- (void)updateAnnotationZIndexes;
 - (void)annotationScriptObjectSelected:(WebScriptObject *)annotationScriptObject;
 - (void)annotationScriptObjectDragStart:(WebScriptObject *)annotationScriptObject;
 - (void)annotationScriptObjectDrag:(WebScriptObject *)annotationScriptObject;
 - (void)annotationScriptObjectDragEnd:(WebScriptObject *)annotationScriptObject;
+- (void)annotationScriptObjectRightClick:(WebScriptObject *)annotationScriptObject;
 - (void)webviewReportingRegionChange;
+- (void)webviewReportingLoadFailure;
+- (void)webviewReportingClick:(NSString *)jsonEncodedLatLng;
+- (void)webviewReportingReloadGmaps;
 - (CLLocationCoordinate2D)coordinateForAnnotationScriptObject:(WebScriptObject *)annotationScriptObject;
 
 @end

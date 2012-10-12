@@ -7,6 +7,7 @@
 //
 
 #import "MKMapView+Additions.h"
+#import <WebKit/WebKit.h>
 
 
 @implementation MKMapView (Additions)
@@ -14,7 +15,8 @@
 - (void)addJavascriptTag:(NSString *)urlString
 {
     WebScriptObject *webScriptObject = [webView windowScriptObject];
-    NSArray *args = [NSArray arrayWithObject:urlString];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSArray *args = [NSArray arrayWithObject:[url filePathURL]];
     [webScriptObject callWebScriptMethod:@"addJavascriptTag" withArguments:args];
 }
 
@@ -22,7 +24,7 @@
 {
     WebScriptObject *webScriptObject = [webView windowScriptObject];
     NSArray *args = [NSArray arrayWithObject:urlString];
-    [webScriptObject callWebScriptMethod:@"addStylesheetTag" withArguments:args]; 
+    [webScriptObject callWebScriptMethod:@"addStylesheetTag" withArguments:args];
 }
 
 - (void)showAddress:(NSString *)address
@@ -43,6 +45,15 @@
     }
     NSString *stringValue = [sender stringValue];
     [self showAddress:stringValue];
+}
+
+
+- (void)close
+{
+	[self setDelegate:nil];
+	[webView close];
+	[[webView windowScriptObject] setValue:nil forKey:@"WindowScriptObject"];
+	[[webView windowScriptObject] setValue:nil forKey:@"MKMapView"];
 }
 
 @end
