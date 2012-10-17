@@ -17,6 +17,9 @@
 
 @implementation MKPolygon
 
+
+
+@synthesize boundingMapRect;
 @synthesize interiorPolygons;
 
 + (MKPolygon *)polygonWithCoordinates:(CLLocationCoordinate2D *)coords count:(NSUInteger)count
@@ -48,10 +51,27 @@
     if (self = [super init])
     {
         coordinates = malloc(sizeof(CLLocationCoordinate2D) * count);
+        CLLocationDegrees maxLatitude  = 0;
+        CLLocationDegrees minLatitude  = 0;
+        CLLocationDegrees maxLongitude = 0;
+        CLLocationDegrees minLongitude = 0;
+        
         for (int i = 0; i < count; i++)
         {
             coordinates[i] = coords[i];
+            
+            maxLatitude= MAX(maxLatitude,coords[i].latitude);
+            minLatitude= MIN(minLatitude,coords[i].latitude);
+            maxLongitude= MAX(maxLongitude,coords[i].longitude);
+            minLongitude= MIN(minLongitude,coords[i].longitude);
         }
+        
+        MKMapPoint minXY= MKMapPointForCoordinate(CLLocationCoordinate2DMake(minLatitude, maxLongitude));
+        MKMapPoint maxXY= MKMapPointForCoordinate(CLLocationCoordinate2DMake(maxLatitude, minLongitude));
+        
+        
+        boundingMapRect = MKMapRectMake(maxXY.x, maxXY.y, minXY.x-maxXY.x, minXY.y-maxXY.y);
+        
         coordinateCount = count;
     }
     return self;
@@ -65,5 +85,10 @@
     }
     return self;
 }
+
+
+
+
+
 
 @end

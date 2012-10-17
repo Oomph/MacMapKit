@@ -17,6 +17,9 @@
 
 @implementation MKPolyline
 
+
+@synthesize boundingMapRect;
+
 + (MKPolyline *)polylineWithCoordinates:(CLLocationCoordinate2D *)coords count:(NSUInteger)count
 {
     return [[[MKPolyline alloc] initWithCoordinates:coords count:count] autorelease];
