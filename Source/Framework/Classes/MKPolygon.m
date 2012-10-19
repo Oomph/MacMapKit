@@ -51,26 +51,25 @@
     if (self = [super init])
     {
         coordinates = malloc(sizeof(CLLocationCoordinate2D) * count);
-        CLLocationDegrees maxLatitude  = 0;
-        CLLocationDegrees minLatitude  = 0;
-        CLLocationDegrees maxLongitude = 0;
-        CLLocationDegrees minLongitude = 0;
+        
+        MKMapPoint minXY = MKMapPointForCoordinate(*coords);
+        MKMapPoint maxXY = MKMapPointForCoordinate(*coords);
         
         for (int i = 0; i < count; i++)
         {
             coordinates[i] = coords[i];
             
-            maxLatitude= MAX(maxLatitude,coords[i].latitude);
-            minLatitude= MIN(minLatitude,coords[i].latitude);
-            maxLongitude= MAX(maxLongitude,coords[i].longitude);
-            minLongitude= MIN(minLongitude,coords[i].longitude);
-        }
+            MKMapPoint mapPoint = MKMapPointForCoordinate(coords[i]);
+            
+            minXY.x= MIN(minXY.x,mapPoint.x);
+            minXY.y= MIN(minXY.y,mapPoint.y);
+            maxXY.x= MAX(maxXY.x,mapPoint.x);
+            maxXY.y= MAX(maxXY.y,mapPoint.y);
+
+            
+         }
         
-        MKMapPoint minXY= MKMapPointForCoordinate(CLLocationCoordinate2DMake(minLatitude, maxLongitude));
-        MKMapPoint maxXY= MKMapPointForCoordinate(CLLocationCoordinate2DMake(maxLatitude, minLongitude));
-        
-        
-        boundingMapRect = MKMapRectMake(maxXY.x, maxXY.y, minXY.x-maxXY.x, minXY.y-maxXY.y);
+        boundingMapRect = MKMapRectMake(minXY.x, minXY.y, (double)(maxXY.x-minXY.x), (double) maxXY.y-minXY.y);
         
         coordinateCount = count;
     }
