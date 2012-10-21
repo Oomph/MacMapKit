@@ -123,6 +123,10 @@
 		9B298B1A162F30BD002FBA29 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B298B14162F3055002FBA29 /* OCMock.framework */; };
 		9B298B1B162F30C6002FBA29 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B298B03162F303F002FBA29 /* OCHamcrest.framework */; };
 		9B298B46162F3283002FBA29 /* MKPolygonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B298B45162F3282002FBA29 /* MKPolygonTest.m */; };
+		9B298BE71632A071002FBA29 /* MKCircleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B298BE61632A071002FBA29 /* MKCircleTest.m */; };
+		9B5FEFCF1632C27E009B0319 /* MKGeometryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FEFCE1632C27E009B0319 /* MKGeometryTest.m */; };
+		9B5FEFD81632C35D009B0319 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FBAF80711F14955004753A9 /* CoreLocation.framework */; };
+		9B5FEFDE1634A20A009B0319 /* MKPolyLineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FEFDD1634A20A009B0319 /* MKPolyLineTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +348,12 @@
 		9B298B0A162F3055002FBA29 /* OCMock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OCMock.xcodeproj; path = vendor/ocmock/Source/OCMock.xcodeproj; sourceTree = "<group>"; };
 		9B298B44162F3282002FBA29 /* MKPolygonTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPolygonTest.h; sourceTree = "<group>"; };
 		9B298B45162F3282002FBA29 /* MKPolygonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPolygonTest.m; sourceTree = "<group>"; };
+		9B298BE51632A070002FBA29 /* MKCircleTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKCircleTest.h; sourceTree = "<group>"; };
+		9B298BE61632A071002FBA29 /* MKCircleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKCircleTest.m; sourceTree = "<group>"; };
+		9B5FEFCD1632C27E009B0319 /* MKGeometryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGeometryTest.h; sourceTree = "<group>"; };
+		9B5FEFCE1632C27E009B0319 /* MKGeometryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGeometryTest.m; sourceTree = "<group>"; };
+		9B5FEFDC1634A20A009B0319 /* MKPolyLineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPolyLineTest.h; sourceTree = "<group>"; };
+		9B5FEFDD1634A20A009B0319 /* MKPolyLineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPolyLineTest.m; sourceTree = "<group>"; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -383,6 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B5FEFD81632C35D009B0319 /* CoreLocation.framework in Frameworks */,
 				9B298B19162F309A002FBA29 /* MapKit.framework in Frameworks */,
 				9B298AE3162F2B47002FBA29 /* SenTestingKit.framework in Frameworks */,
 				9B298AE5162F2B47002FBA29 /* Cocoa.framework in Frameworks */,
@@ -746,6 +757,12 @@
 				9B298AEB162F2B48002FBA29 /* Supporting Files */,
 				9B298B44162F3282002FBA29 /* MKPolygonTest.h */,
 				9B298B45162F3282002FBA29 /* MKPolygonTest.m */,
+				9B298BE51632A070002FBA29 /* MKCircleTest.h */,
+				9B298BE61632A071002FBA29 /* MKCircleTest.m */,
+				9B5FEFCD1632C27E009B0319 /* MKGeometryTest.h */,
+				9B5FEFCE1632C27E009B0319 /* MKGeometryTest.m */,
+				9B5FEFDC1634A20A009B0319 /* MKPolyLineTest.h */,
+				9B5FEFDD1634A20A009B0319 /* MKPolyLineTest.m */,
 			);
 			path = MapKitTest;
 			sourceTree = "<group>";
@@ -1143,6 +1160,9 @@
 			files = (
 				9B298AF2162F2B48002FBA29 /* MapKitTest.m in Sources */,
 				9B298B46162F3283002FBA29 /* MKPolygonTest.m in Sources */,
+				9B298BE71632A071002FBA29 /* MKCircleTest.m in Sources */,
+				9B5FEFCF1632C27E009B0319 /* MKGeometryTest.m in Sources */,
+				9B5FEFDE1634A20A009B0319 /* MKPolyLineTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -42,12 +42,26 @@
 {
     if (self = [super init])
     {
+        
+        MKMapPoint minXY = MKMapPointForCoordinate(*coords);
+        MKMapPoint maxXY = MKMapPointForCoordinate(*coords);
+   
         coordinates = malloc(sizeof(CLLocationCoordinate2D) * count);
         for (int i = 0; i < count; i++)
         {
             coordinates[i] = coords[i];
+            MKMapPoint mapPoint = MKMapPointForCoordinate(coords[i]);
+            
+            minXY.x= MIN(minXY.x,mapPoint.x);
+            minXY.y= MIN(minXY.y,mapPoint.y);
+            maxXY.x= MAX(maxXY.x,mapPoint.x);
+            maxXY.y= MAX(maxXY.y,mapPoint.y);
+
         }
         coordinateCount = count;
+  
+        boundingMapRect = MKMapRectMake(minXY.x, minXY.y, (double)(maxXY.x-minXY.x), (double) maxXY.y-minXY.y);
+    
     }
     return self;
 }

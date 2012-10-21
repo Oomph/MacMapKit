@@ -44,6 +44,11 @@
     {
         coordinate = aCoord;
         radius = aRadius;
+        
+
+//TODO: set the boundingMapRect
+        
+        
     }
     return self;
 }
