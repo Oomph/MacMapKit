@@ -1,0 +1,6 @@
+[submodule "Source/MapKitTest/vendor/OCHamcrest"]
+	path = Source/MapKitTest/vendor/OCHamcrest
+	url = https://github.com/hamcrest/OCHamcrest.git
+[submodule "Source/MapKitTest/vendor/ocmock"]
+	path = Source/MapKitTest/vendor/ocmock
+	url = https://github.com/erikdoe/ocmock.git

@@ -18,6 +18,7 @@
 @implementation MKCircle
 
 @synthesize coordinate, radius;
+@synthesize boundingMapRect;
 
 + (MKCircle *)circleWithCenterCoordinate:(CLLocationCoordinate2D)aCoord radius:(CLLocationDistance)aRadius
 {
@@ -43,6 +44,11 @@
     {
         coordinate = aCoord;
         radius = aRadius;
+        
+
+//TODO: set the boundingMapRect
+        
+        
     }
     return self;
 }
