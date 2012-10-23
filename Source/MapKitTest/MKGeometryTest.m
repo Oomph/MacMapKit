@@ -111,6 +111,29 @@
 }
 
 
+- (void)testConversionMKMapRect2CoordinateRegion
+{
+    
+    
+    MKMapPoint points[] = {
+        MKMapPointMake(42739440.2760931551456451416015625   ,96012095.9123315513134002685546875),   // Portland
+        MKMapPointMake(117136036.84706987440586090087890625 ,169999587.945367515087127685546875),   // Rio
+        MKMapPointMake(164798670.6277262270450592041015625  ,111626999.71328115463256835937),   // Istanbul
+        MKMapPointMake(117863049.54040320217609405517578125 ,71362638.15177667140960693359375),   // Reykjavik
+    };
+
+    MKCoordinateRegion coordinateRegion =  MKCoordinateRegionForMapRect(MKMapRectMake(42739440, 96012095, 164798670-2739440, 111626999-96012095));
+    
+    assertThatDouble(coordinateRegion.center.latitude,closeTo(37.707426,0.000001));
+    assertThatDouble(coordinateRegion.center.longitude,closeTo(-14.012762,0.000001));
+    assertThatDouble(coordinateRegion.span.latitudeDelta,closeTo(16.543982,0.000001));
+    assertThatDouble(coordinateRegion.span.longitudeDelta,closeTo(217.338363,0.000001));
+ 
+    
+    
+}
+
+
 - (void)testConstants
 {
     

@@ -72,3 +72,17 @@ CLLocationDistance MKMetersPerMapPointAtLatitude(CLLocationDegrees longitude)
 {
 	return 1.0/MKMapPointsPerMeterAtLatitude(longitude);
 }
+
+
+MKCoordinateRegion MKCoordinateRegionForMapRect(MKMapRect rect)
+{
+    CLLocationCoordinate2D center = MKCoordinateForMapPoint(MKMapPointMake(MKMapRectGetMidX(rect), MKMapRectGetMidY(rect)));
+    
+    
+    CLLocationCoordinate2D northWest = MKCoordinateForMapPoint(rect.origin);
+    CLLocationCoordinate2D southEast = MKCoordinateForMapPoint(MKMapPointMake(MKMapRectGetMaxX(rect), MKMapRectGetMaxY(rect)));
+    
+    
+    return MKCoordinateRegionMake(center, MKCoordinateSpanMake(northWest.latitude - southEast.latitude, southEast.longitude - northWest.longitude));
+    
+}
