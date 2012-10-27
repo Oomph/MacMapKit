@@ -179,7 +179,7 @@
     [self willChangeValueForKey:@"visibleMapRect"];
     visibleMapRect = mapRect;
     
-    [self setRegion:MKCoordinateRegionForMapRect(visibleMapRect) animated:animate];
+    [self setRegion:MKCoordinateRegionForMapRect(visibleMapRect) animated:NO];
     
     [self didChangeValueForKey:@"visibleMapRect"];
     
