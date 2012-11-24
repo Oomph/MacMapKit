@@ -8,7 +8,7 @@
 
 // MKMapView+ZoomLevel.h
 
-#import <MapKit/MapKit.h>
+#import <MapKit/MKMapView.h>
 
 @interface MKMapView (ZoomLevel)
 

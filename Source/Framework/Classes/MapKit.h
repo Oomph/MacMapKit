@@ -30,4 +30,5 @@
 #import <MapKit/MKReverseGeocoder.h>
 #import <MapKit/MKGeocoder.h>
 #import <MapKit/MKPlacemark.h>
+#import <MapKit/MKMapView+ZoomLevel.h>
 
