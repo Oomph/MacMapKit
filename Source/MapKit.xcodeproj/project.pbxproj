@@ -982,6 +982,7 @@
 					AppKit,
 				);
 				PRODUCT_NAME = MapKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
 			};
 			name = Debug;
 		};
@@ -1013,6 +1014,7 @@
 					AppKit,
 				);
 				PRODUCT_NAME = MapKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PRODUCT_NAME)";
 				ZERO_LINK = NO;
 			};
 			name = Release;
