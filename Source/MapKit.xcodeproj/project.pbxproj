@@ -319,7 +319,6 @@
 		0867D691FE84028FC02AAC07 /* MapKit */ = {
 			isa = PBXGroup;
 			children = (
-				5FE1308615E94B9600265D22 /* CoreFoundation.framework */,
 				5F6EF12411F13A9E0077E84F /* DemoApp */,
 				5F6EF12311F13A920077E84F /* Framework */,
 				5FB7434111FE6D5C00AB2079 /* IBPlugin */,
@@ -400,6 +399,7 @@
 		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FE1308615E94B9600265D22 /* CoreFoundation.framework */,
 				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
 				D2F7E79907B2D74100F64583 /* CoreData.framework */,
 				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
