@@ -8,6 +8,7 @@
  */
 
 #import <CoreLocation/CoreLocation.h>
+#import "MKFoundation.h"
 
 typedef struct {
     CLLocationDegrees latitudeDelta;
@@ -61,22 +62,23 @@ typedef struct {
 typedef CGFloat MKZoomScale;
 
 // The map point for the coordinate (-90,180)
-extern const MKMapSize MKMapSizeWorld;
+MK_EXTERN const MKMapSize MKMapSizeWorld;
 // The rect that contains every map point in the world.
-extern  const MKMapRect MKMapRectWorld;
+MK_EXTERN  const MKMapRect MKMapRectWorld;*/
 
  
 // Conversion between unprojected and projected coordinates
-extern  MKMapPoint MKMapPointForCoordinate(CLLocationCoordinate2D coordinate);
-extern  CLLocationCoordinate2D MKCoordinateForMapPoint(MKMapPoint mapPoint);
+MK_EXTERN  MKMapPoint MKMapPointForCoordinate(CLLocationCoordinate2D coordinate);
+MK_EXTERN  CLLocationCoordinate2D MKCoordinateForMapPoint(MKMapPoint mapPoint);
 
+/*
 // Conversion between distances and projected coordinates
-extern  CLLocationDistance MKMetersPerMapPointAtLatitude(CLLocationDegrees latitude);
-extern  double MKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude);
+MK_EXTERN  CLLocationDistance MKMetersPerMapPointAtLatitude(CLLocationDegrees latitude);
+MK_EXTERN  double MKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude);*/
 
-extern  CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b);
+MK_EXTERN  CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b);
 
-extern  const MKMapRect MKMapRectNull;*/
+/*MK_EXTERN  const MKMapRect MKMapRectNull;*/
 
 // Geometric operations on MKMapPoint/Size/Rect.  See CGGeometry.h for 
 // information on the CGFloat versions of these functions.
@@ -144,23 +146,26 @@ static inline NSString *MKStringFromMapSize(MKMapSize size) {
 static inline NSString *MKStringFromMapRect(MKMapRect rect) {
     return [NSString stringWithFormat:@"{%@, %@}", MKStringFromMapPoint(rect.origin), MKStringFromMapSize(rect.size)];
 }
+
+MK_EXTERN MKMapRect MKMapRectUnion(MKMapRect rect1, MKMapRect rect2);
+
 /*
-extern MKMapRect MKMapRectUnion(MKMapRect rect1, MKMapRect rect2);
-extern MKMapRect MKMapRectIntersection(MKMapRect rect1, MKMapRect rect2);
-extern MKMapRect MKMapRectInset(MKMapRect rect, double dx, double dy);
-extern MKMapRect MKMapRectOffset(MKMapRect rect, double dx, double dy);
-extern void MKMapRectDivide(MKMapRect rect, MKMapRect *slice, MKMapRect *remainder, double amount, CGRectEdge edge);
+MK_EXTERN MKMapRect MKMapRectIntersection(MKMapRect rect1, MKMapRect rect2);
+MK_EXTERN MKMapRect MKMapRectInset(MKMapRect rect, double dx, double dy);
+MK_EXTERN MKMapRect MKMapRectOffset(MKMapRect rect, double dx, double dy);
+MK_EXTERN void MKMapRectDivide(MKMapRect rect, MKMapRect *slice, MKMapRect *remainder, double amount, CGRectEdge edge);*/
 
-extern BOOL MKMapRectContainsPoint(MKMapRect rect, MKMapPoint point);
-extern BOOL MKMapRectContainsRect(MKMapRect rect1, MKMapRect rect2);
-extern BOOL MKMapRectIntersectsRect(MKMapRect rect1, MKMapRect rect2);
+MK_EXTERN BOOL MKMapRectContainsPoint(MKMapRect rect, MKMapPoint point);
 
-extern MKCoordinateRegion MKCoordinateRegionForMapRect(MKMapRect rect);
+/*MK_EXTERN BOOL MKMapRectContainsRect(MKMapRect rect1, MKMapRect rect2);
+MK_EXTERN BOOL MKMapRectIntersectsRect(MKMapRect rect1, MKMapRect rect2);*/
 
-extern BOOL MKMapRectSpans180thMeridian(MKMapRect rect);
+MK_EXTERN MKCoordinateRegion MKCoordinateRegionForMapRect(MKMapRect rect);
+
+/*MK_EXTERN BOOL MKMapRectSpans180thMeridian(MKMapRect rect);
 // For map rects that span the 180th meridian, this returns the portion of the rect
 // that lies outside of the world rect wrapped around to the other side of the
 // world.  The portion of the rect that lies inside the world rect can be 
 // determined with MKMapRectIntersection(rect, MKMapRectWorld).
-extern MKMapRect MKMapRectRemainder(MKMapRect rect);
+MK_EXTERN MKMapRect MKMapRectRemainder(MKMapRect rect);
  */

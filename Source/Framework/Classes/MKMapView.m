@@ -8,17 +8,17 @@
 
 #import "MKMapView.h"
 #import "MKMapView+Private.h"
-#import "JSON.h"
-#import <MapKit/MKUserLocation.h>
-#import "MKUserLocation+Private.h"
-#import <MapKit/MKCircleView.h>
-#import <MapKit/MKCircle.h>
-#import <MapKit/MKPolyline.h>
-#import <MapKit/MKPolygon.h>
-#import <MapKit/MKAnnotationView.h>
-#import <MapKit/MKPointAnnotation.h>
 #import "MKMapView+DelegateWrappers.h"
 #import "MKMapView+WebViewIntegration.h"
+#import "JSON.h"
+#import "MKUserLocation.h"
+#import "MKUserLocation+Project.h"
+#import "MKCircleView.h"
+#import "MKCircle.h"
+#import "MKPolyline.h"
+#import "MKPolygon.h"
+#import "MKAnnotationView.h"
+#import "MKPointAnnotation.h"
 #import "MKWebView.h"
 
 

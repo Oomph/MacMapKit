@@ -7,8 +7,10 @@
  *
  */
 
+#import <MapKit/MKFoundation.h>
 #import <MapKit/MKMapView.h>
 #import <MapKit/MKMapView+Additions.h>
+#import <MapKit/MKMapView+ZoomLevel.h>
 #import <MapKit/MKTypes.h>
 #import <MapKit/MKGeometry.h>
 #import <MapKit/MKUserLocation.h>
@@ -30,5 +32,4 @@
 #import <MapKit/MKReverseGeocoder.h>
 #import <MapKit/MKGeocoder.h>
 #import <MapKit/MKPlacemark.h>
-#import <MapKit/MKMapView+ZoomLevel.h>
 
