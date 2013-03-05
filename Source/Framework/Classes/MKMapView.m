@@ -7,7 +7,6 @@
 //
 
 #import "MKMapView.h"
-#import "MKMapView+Private.h"
 #import "MKMapView+DelegateWrappers.h"
 #import "MKMapView+WebViewIntegration.h"
 #import "JSON.h"
@@ -21,11 +20,69 @@
 #import "MKPointAnnotation.h"
 #import "MKWebView.h"
 
+@interface MKMapView ()
+
+- (void)customInit;
++ (NSMapTable *)mapTableWithStrongToStrongObjects;
+
+@end
+
 
 @implementation MKMapView
 
 @synthesize delegate, mapType, userLocation, showsUserLocation;
 
+- (void)customInit
+{
+    // Initialization code here.
+    webView = [[MKWebView alloc] initWithFrame:[self bounds]];
+    [webView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    [self addSubview:webView];
+    
+    [[[webView mainFrame] frameView] setAllowsScrolling:NO];
+    [webView setFrameLoadDelegate:self];
+    [webView setUIDelegate:self];
+    [webView setMaintainsBackForwardList:NO];
+	// Let's set a custom user agent, as it looks like they're doing some type of UA checking on their end and that's breaking annotations on our end.
+	///[webView setCustomUserAgent:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"];
+	NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+	if (applicationName == nil)
+		applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
+	
+	[webView setCustomUserAgent:[NSString stringWithFormat:@"%@ AppleWebKit", applicationName]];
+	
+    // Create the overlay data structures
+    overlays = [[NSMutableArray array] retain];
+    
+    if ([[NSMapTable class] respondsToSelector:@selector(strongToStrongObjectsMapTable)]) {
+        overlayViews = [[NSMapTable strongToStrongObjectsMapTable] retain];
+        overlayScriptObjects = [[NSMapTable strongToStrongObjectsMapTable] retain];
+    } else {
+        overlayViews = [[MKMapView mapTableWithStrongToStrongObjects] retain];
+        overlayScriptObjects = [[MKMapView mapTableWithStrongToStrongObjects] retain];
+    }
+    
+    // Create the annotation data structures
+    annotations = [[NSMutableArray array] retain];
+    selectedAnnotations = [[NSMutableArray array] retain];
+    if ([[NSMapTable class] respondsToSelector:@selector(strongToStrongObjectsMapTable)]) {
+        annotationViews = [[NSMapTable strongToStrongObjectsMapTable] retain];
+        annotationScriptObjects = [[NSMapTable strongToStrongObjectsMapTable] retain];
+    } else {
+        annotationViews = [[MKMapView mapTableWithStrongToStrongObjects] retain];
+        annotationScriptObjects = [[MKMapView mapTableWithStrongToStrongObjects] retain];
+    }
+    
+    [self loadMapKitHtml];
+    
+    // Create a user location
+    userLocation = [[MKUserLocation alloc] init];
+}
+
++ (NSMapTable *)mapTableWithStrongToStrongObjects
+{
+    return [NSMapTable mapTableWithStrongToStrongObjects];
+}
 
 - (id)initWithFrame:(NSRect)frame {
     if (self = [super initWithFrame:frame]) 
@@ -101,6 +158,10 @@
     NSString *json = [webScriptObject evaluateWebScript:@"getCenterCoordinate()"];
     if ([json isKindOfClass:[NSString class]])
     {
+        if ([json isKindOfClass:[WebUndefined class]]) {
+            NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+        }
+        
         NSDictionary *latlong = [json JSONValue];
         latitude = [latlong objectForKey:@"latitude"];
         longitude = [latlong objectForKey:@"longitude"];
@@ -136,6 +197,11 @@
 {
     WebScriptObject *webScriptObject = [webView windowScriptObject];
     NSString *json = [webScriptObject evaluateWebScript:@"getRegion()"];
+    
+    if ([json isKindOfClass:[WebUndefined class]]) {
+        NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+    }
+    
     NSDictionary *regionDict = [json JSONValue];
     
     NSNumber *centerLatitude = [regionDict valueForKeyPath:@"center.latitude"];
@@ -527,6 +593,10 @@
     NSNumber *y = nil;
     if ([json isKindOfClass:[NSString class]])
     {
+        if ([json isKindOfClass:[WebUndefined class]]) {
+            NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+        }
+        
         NSDictionary *xy = [json JSONValue];
         x = [xy objectForKey:@"x"];
         y = [xy objectForKey:@"y"];
@@ -656,7 +726,7 @@
         [self setMapType:[self mapType]];
         [self setShowsUserLocation:[self showsUserLocation]];
         
-	[self performSelector:@selector(delegateDidFinishLoadingMap) withObject:nil afterDelay:0.5];
+        [self performSelector:@selector(delegateDidFinishLoadingMap) withObject:nil afterDelay:0.5];
     }
 }
 

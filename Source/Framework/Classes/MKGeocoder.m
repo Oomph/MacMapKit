@@ -139,6 +139,10 @@
     if (!querying)
         return;
     
+    if ([jsonEncodedGeocoderResult isKindOfClass:[WebUndefined class]]) {
+        NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+    }
+    
     id result = [jsonEncodedGeocoderResult JSONValue];
     MKPlacemark *aPlacemark = [[MKPlacemark alloc] initWithGoogleGeocoderResult: result];
     coordinate = aPlacemark.coordinate;

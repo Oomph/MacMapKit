@@ -11,6 +11,7 @@
 
 @interface MKMapView (WebViewIntegration)
 
+- (void)loadMapKitHtml;
 - (void)setUserLocationMarkerVisible:(BOOL)visible;
 - (void)updateUserLocationMarkerWithLocaton:(CLLocation *)location;
 - (void)updateOverlayZIndexes;

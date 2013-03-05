@@ -1,27 +1,27 @@
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&v=3.6"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&v=3.10.20"></script>
 
-<style type="text/css">
+<link type="text/css" href="Animations.css" rel="stylesheet" />
+<link type="text/css" href="Stylesheet.css" rel="stylesheet" />
+    
+<script type="text/javascript">
 
+if (!document.getElementsByClassName) {
+    document.getElementsByClassName = function(cl) {
+        var retnode = [];
+        var myclass = new RegExp('\\b'+cl+'\\b');
+        var elem = this.getElementsByTagName('*');
+        for (var i = 0; i < elem.length; i++) {
+            var classes = elem[i].className;
+            if (myclass.test(classes)) retnode.push(elem[i]);
+        }
+        return retnode;
+    };
+}
 
-</style>
-
-<script type="text/javascript">  
-
-document.getElementsByClassName = function(cl) {
-    var retnode = [];
-    var myclass = new RegExp('\\b'+cl+'\\b');
-    var elem = this.getElementsByTagName('*');
-    for (var i = 0; i < elem.length; i++) {
-        var classes = elem[i].className;
-        if (myclass.test(classes)) retnode.push(elem[i]);
-    }
-    return retnode;
-};
-
-window.onwebkitanimationend =  function(event) {
+window.onwebkitanimationend = function(event) {
     var e = event ? event : window.event;
     var currentTarget = e.currentTarget;
 	if (e.animationName == "annotationCalloutPulse")
@@ -200,13 +200,20 @@ window.onwebkitanimationend =  function(event) {
           }
           else if (option == "zIndex")
           {
-              if (annotation.div_)
-                annotation.div_.style.zIndex = value;
-              if (annotation.imageTag_)
-                annotation.imageTag_.style.zIndex = value;
               marker.setOptions({"zIndex": value});
+              if (annotation.div_)
+                  annotation.div_.style.zIndex = value;
+              if (annotation.imageTag_)
+                  annotation.imageTag_.style.zIndex = value;
               if (annotation.calloutWrapper_)
-                annotation.calloutWrapper_.style.zIndex = value;
+                  annotation.calloutWrapper_.style.zIndex = value;
+          }
+          else if (option == "animatesDrop")
+          {
+              if (value)
+                  marker.setAnimation(google.maps.Animation.DROP);
+              else
+                  marker.setAnimation(null);
           }
       }
   }
@@ -854,10 +861,6 @@ window.onwebkitanimationend =  function(event) {
   // End New API
   
   function initialize() {
-    // Start asynchronous load of CSS
-    addStylesheetTag("Animations.css");
-    addStylesheetTag("Stylesheet.css");
-      
     map = null;
     try {
         var latlng = new google.maps.LatLng(49.85770356304121, -97.1528089768459);
@@ -902,74 +905,25 @@ window.onwebkitanimationend =  function(event) {
             window.MKMapView.webviewReportingLoadFailure();
         }
     }
-
     
     if (map == null)
     {
         var mapView = document.getElementById("map_canvas");
         mapView.innerHTML = "<div class='mapKitLoadError'><div class='mapKitLoadErrorCenter'><div class='mapKitLoadErrorMessage'>Error Loading MapView, an internet connection is required. <br/><button onclick='window.MKMapView.webviewReportingReloadGmaps()'>Retry</button></div></div></div>";
     }
-    
-
-    
-
-    //setUserLocationRadius(222);
-    //setUserLocationLatitudeLongitude(49.8708880903330, -97.1528089768459);
-    //setUserLocationVisible(true);
-    /*
-    var anOverlay = new google.maps.Circle();
-    var ne = new google.maps.LatLng(49.84770356304121, -97.1528089768459);
-    var radius = 400;
-    var options = {"strokeWeight": 3.0, "fillColor": "#ff0000", "fillOpacity": 0.3,
-        "strokeColor": "#ff0000", "strokeOpacity": 1.0};
-    var moreOptions = {"radius": radius, "center": ne};
-    var colorOptions = {"strokeColor": "#ff0000"};
-    //addOverlay(anOverlay);
-    //anOverlay.setOptions(options);
-    anOverlay.setOptions(moreOptions);
-    anOverlay.setOptions(colorOptions);
-    
-    var polygonOverlay = new google.maps.Polygon();
-    var p1 = new google.maps.LatLng(49.83770356304121, -97.1628089768459);
-    var p2 = new google.maps.LatLng(49.86770356304121, -97.1628089768459);
-    var p3 = new google.maps.LatLng(49.86770356304121, -97.2028089768459);
-    var p4 = new google.maps.LatLng(49.85070356304121, -97.1758089768459);
-    var p5 = new google.maps.LatLng(49.85470356304121, -97.1758089768459);
-    var p6 = new google.maps.LatLng(49.85470356304121, -97.1828089768459);
-
-    polygonOverlay.setOptions({"paths": [[p1, p2, p3], [p4,p5,p6]]});
-    //polygonOverlay.setMap(map);
-    
-    var marker = new AnnotationOverlay();
-    var markerImage = new google.maps.MarkerImage('file://localhost/Users/rfillion/Projects/centrix.ca/MapKit/Source/build/Debug/DemoApp.app/Contents/Resources/MarkerTest.png', null, null, null, null);
-    //var markerOptions = {"draggable": true, "icon": markerImage, "position": new google.maps.LatLng(49.83770356304121, -97.1628089768459)};
-    var markerOptions = {"draggable": false, "imageUrl": 'file://localhost/Users/rfillion/Projects/centrix.ca/MapKit/Source/build/Release/MapKit.framework/Resources/MKPinAnnotationColorRed.png', "position": new google.maps.LatLng(49.83770356304121, -97.1628089768459), "title": "1"};
-    
-    setOverlayOption(marker, "draggable", markerOptions["draggable"]);
-    setOverlayOption(marker, "title", "asdf");
-    setOverlayOption(marker, "imageUrl", markerOptions["imageUrl"]);
-    setOverlayOption(marker, "position", markerOptions["position"]);
-    
-    //marker.setOptions(markerOptions); 
-    addAnnotation(marker);
-    //marker.setCalloutText("My Title");
-    marker.setCalloutHidden(true); 
-
-    //marker.setOptions(markerOptions); */
-    //reverseGeocode(49.8578255,-97.16531639999999);
-    //showAddress("255 Provencher Blvd Winnipeg MB")
   }
 
 </script>
 </head>
-<body onload="initialize()">
-    <div id="MKMapViewTopLayer">
-    </div>
+    
+<body>
+    <div id="MKMapViewTopLayer"></div>
         
     <div id="map_canvas" style="top:0px; left:0px; width:100%; height:100%">
         Loading MapKit...
-    <button>test</button>
+        <button>test</button>
     </div>
+    
     <div class="zoomControls">
         <div class="zoom" onClick="map.setZoom(map.getZoom()+1);">
     		<div class="in"></div>
@@ -981,6 +935,64 @@ window.onwebkitanimationend =  function(event) {
     		<div class="out"></div>
     	</div>
     </div>
-
+    
+    <script type="text/javascript">
+        initialize();
+    </script>
+    
+    <script type="text/javascript">
+        /*
+         //
+         // This is some test code to test out the html in a standard safari browser
+         //
+         
+         //setUserLocationRadius(222);
+         //setUserLocationLatitudeLongitude(49.8708880903330, -97.1528089768459);
+         //setUserLocationVisible(true);
+         
+         var anOverlay = new google.maps.Circle();
+         var ne = new google.maps.LatLng(49.84770356304121, -97.1528089768459);
+         var radius = 400;
+         var options = {"strokeWeight": 3.0, "fillColor": "#ff0000", "fillOpacity": 0.3,
+         "strokeColor": "#ff0000", "strokeOpacity": 1.0};
+         var moreOptions = {"radius": radius, "center": ne};
+         var colorOptions = {"strokeColor": "#ff0000"};
+         //addOverlay(anOverlay);
+         //anOverlay.setOptions(options);
+         anOverlay.setOptions(moreOptions);
+         anOverlay.setOptions(colorOptions);
+         
+         var polygonOverlay = new google.maps.Polygon();
+         var p1 = new google.maps.LatLng(49.83770356304121, -97.1628089768459);
+         var p2 = new google.maps.LatLng(49.86770356304121, -97.1628089768459);
+         var p3 = new google.maps.LatLng(49.86770356304121, -97.2028089768459);
+         var p4 = new google.maps.LatLng(49.85070356304121, -97.1758089768459);
+         var p5 = new google.maps.LatLng(49.85470356304121, -97.1758089768459);
+         var p6 = new google.maps.LatLng(49.85470356304121, -97.1828089768459);
+         
+         polygonOverlay.setOptions({"paths": [[p1, p2, p3], [p4,p5,p6]]});
+         //polygonOverlay.setMap(map);
+         
+         var marker = new AnnotationOverlay();
+         var markerImage = new google.maps.MarkerImage('file://localhost/Users/rfillion/Projects/centrix.ca/MapKit/Source/build/Debug/DemoApp.app/Contents/Resources/MarkerTest.png', null, null, null, null);
+         //var markerOptions = {"draggable": true, "icon": markerImage, "position": new google.maps.LatLng(49.83770356304121, -97.1628089768459)};
+         var markerOptions = {"draggable": false, "imageUrl": 'file://localhost/Users/rfillion/Projects/centrix.ca/MapKit/Source/build/Release/MapKit.framework/Resources/MKPinAnnotationColorRed.png', "position": new google.maps.LatLng(49.83770356304121, -97.1628089768459), "title": "1"};
+        
+         setOverlayOption(marker, "draggable", markerOptions["draggable"]);
+         setOverlayOption(marker, "title", "asdf");
+         setOverlayOption(marker, "imageUrl", markerOptions["imageUrl"]);
+         setOverlayOption(marker, "position", markerOptions["position"]);
+         
+         //marker.setOptions(markerOptions);
+         addAnnotation(marker);
+         //marker.setCalloutText("My Title");
+         marker.setCalloutHidden(true);
+         
+         //marker.setOptions(markerOptions);
+         //reverseGeocode(49.8578255,-97.16531639999999);
+         //showAddress("255 Provencher Blvd Winnipeg MB")
+        */
+    </script>
+    
 </body>
 </html>

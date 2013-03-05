@@ -81,7 +81,6 @@
 
 - (void)draw:(WebScriptObject *)overlayScriptObject
 {
- 
     [latlngCenter release];
     NSString *script = [NSString stringWithFormat:@"new google.maps.LatLng(%f, %f);", self.annotation.coordinate.latitude, self.annotation.coordinate.longitude];
     latlngCenter = (WebScriptObject *)[overlayScriptObject evaluateWebScript:script];

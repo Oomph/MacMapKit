@@ -10,7 +10,6 @@
 #import "MKMapView+DelegateWrappers.h"
 #import "JSON.h"
 #import "MKWebView.h"
-#import "MKMapView+Private.h"
 
 // MKAnnotation has a readonly coordinate property, but draggable annotations
 // need the ability to set them.
@@ -24,6 +23,14 @@
 
 
 @implementation MKMapView (WebViewIntegration)
+
+- (void)loadMapKitHtml
+{
+    // TODO : make this suck less.
+    NSBundle *frameworkBundle = [NSBundle bundleForClass:[MKMapView class]];
+    NSString *indexPath = [frameworkBundle pathForResource:@"MapKit" ofType:@"html"];
+    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:indexPath]]];
+}
 
 + (NSString *) webScriptNameForSelector:(SEL)sel
 {
@@ -309,6 +316,10 @@
     NSTimeInterval timeSinceMouseDown = [[NSDate date] timeIntervalSinceDate:[webView lastHitTestDate]];
     if (timeSinceMouseDown > 0.5)
     {
+        if ([jsonEncodedLatLng isKindOfClass:[WebUndefined class]]) {
+            NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+        }
+        
         NSDictionary *latlong = [jsonEncodedLatLng JSONValue];
         NSNumber *latitude = [latlong objectForKey:@"latitude"];
         NSNumber *longitude = [latlong objectForKey:@"longitude"];
@@ -379,6 +390,11 @@
     WebScriptObject *windowScriptObject = [webView windowScriptObject];
     
     NSString *json = [windowScriptObject callWebScriptMethod:@"coordinateForAnnotation" withArguments:[NSArray arrayWithObject:annotationScriptObject]];
+    
+    if ([json isKindOfClass:[WebUndefined class]]) {
+        NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+    }
+    
     NSDictionary *latlong = [json JSONValue];
     NSNumber *latitude = [latlong objectForKey:@"latitude"];
     NSNumber *longitude = [latlong objectForKey:@"longitude"];

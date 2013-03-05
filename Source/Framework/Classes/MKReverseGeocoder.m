@@ -132,6 +132,10 @@
     if (!querying)
         return;
     
+    if ([jsonAddress isKindOfClass:[WebUndefined class]]) {
+        NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+    }
+    
     id result = [jsonAddress JSONValue];
     MKPlacemark *aPlacemark = [[[MKPlacemark alloc] initWithGoogleGeocoderResult: result] autorelease];
     placemark = [aPlacemark retain];
