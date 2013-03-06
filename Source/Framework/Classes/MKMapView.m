@@ -35,21 +35,20 @@
 - (void)customInit
 {
     // Initialization code here.
-    webView = [[MKWebView alloc] initWithFrame:[self bounds]];
-    [webView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-    [self addSubview:webView];
-    
-    [[[webView mainFrame] frameView] setAllowsScrolling:NO];
-    [webView setFrameLoadDelegate:self];
-    [webView setUIDelegate:self];
-    [webView setMaintainsBackForwardList:NO];
-	// Let's set a custom user agent, as it looks like they're doing some type of UA checking on their end and that's breaking annotations on our end.
-	///[webView setCustomUserAgent:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/536.25 (KHTML, like Gecko) Version/6.0 Safari/536.25"];
-	NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
 	if (applicationName == nil)
 		applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
-	
+    
+    webView = [[MKWebView alloc] initWithFrame:[self bounds]];
+    [webView setGroupName:@"Group"];
+    [webView setFrameLoadDelegate:self];
+    [webView setUIDelegate:self];
+    [webView setPolicyDelegate:self];
+    [webView setMaintainsBackForwardList:NO];
 	[webView setCustomUserAgent:[NSString stringWithFormat:@"%@ AppleWebKit", applicationName]];
+    [[[webView mainFrame] frameView] setAllowsScrolling:NO];
+    [webView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    [self addSubview:webView];
 	
     // Create the overlay data structures
     overlays = [[NSMutableArray array] retain];
@@ -731,6 +730,12 @@
 }
 
 #pragma mark WebUIDelegate
+
+- (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id<WebPolicyDecisionListener>)listener
+{
+    [[NSWorkspace sharedWorkspace] openURL:request.URL];
+    [listener ignore];
+}
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
 {
