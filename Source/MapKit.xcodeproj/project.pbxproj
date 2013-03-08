@@ -15,6 +15,7 @@
 		1F5563C216AF87820067BD83 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5563C116AF87820067BD83 /* SenTestingKit.framework */; };
 		1F5563C316AF87A50067BD83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6EF13B11F13B170077E84F /* Cocoa.framework */; };
 		1F5563C416AF87AB0067BD83 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FBAF80711F14955004753A9 /* CoreLocation.framework */; };
+		1F58F50A16EA629100817438 /* MapKit.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F1810AA16E7E9230066AD37 /* MapKit.js */; };
 		5F199EE8120257FB0083FE72 /* MapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6EF17D11F13F690077E84F /* MapKit.framework */; };
 		5F19A03E1208F6DE0083FE72 /* MKMapView+MapKitPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F19A03D1208F6DE0083FE72 /* MKMapView+MapKitPlugin.m */; };
 		5F19A0491208F9260083FE72 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5F19A0471208F9260083FE72 /* License.rtf */; };
@@ -32,8 +33,6 @@
 		5F6EF18A11F13FDC0077E84F /* MapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6EF17D11F13F690077E84F /* MapKit.framework */; };
 		5F76C78911F4EDE000713BBA /* MKView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F76C78711F4EDE000713BBA /* MKView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F76C78A11F4EDE000713BBA /* MKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F76C78811F4EDE000713BBA /* MKView.m */; };
-		5F76C82111F4F85E00713BBA /* MarkerTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C82011F4F85E00713BBA /* MarkerTest.png */; };
-		5F76C83A11F4FC8F00713BBA /* MarkerTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C82011F4F85E00713BBA /* MarkerTest.png */; };
 		5F76C88011F52BFC00713BBA /* MKPinAnnotationColorRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C87F11F52BFC00713BBA /* MKPinAnnotationColorRed.png */; };
 		5F76C89A11F52DFA00713BBA /* MKPinAnnotationColorGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C89811F52DFA00713BBA /* MKPinAnnotationColorGreen.png */; };
 		5F76C89B11F52DFA00713BBA /* MKPinAnnotationColorPurple.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C89911F52DFA00713BBA /* MKPinAnnotationColorPurple.png */; };
@@ -166,6 +165,7 @@
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1F1810AA16E7E9230066AD37 /* MapKit.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = MapKit.js; sourceTree = "<group>"; };
 		1F55639316AF6B070067BD83 /* MKFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKFoundation.h; sourceTree = "<group>"; };
 		1F55639916AF6C750067BD83 /* MKGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGeometry.m; sourceTree = "<group>"; };
 		1F5563A916AF7E170067BD83 /* MapKitFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapKitFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,7 +195,6 @@
 		5F6EF18711F13FA40077E84F /* MapKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MapKit-Info.plist"; sourceTree = "<group>"; };
 		5F76C78711F4EDE000713BBA /* MKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKView.h; sourceTree = "<group>"; };
 		5F76C78811F4EDE000713BBA /* MKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKView.m; sourceTree = "<group>"; };
-		5F76C82011F4F85E00713BBA /* MarkerTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MarkerTest.png; sourceTree = "<group>"; };
 		5F76C87F11F52BFC00713BBA /* MKPinAnnotationColorRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MKPinAnnotationColorRed.png; sourceTree = "<group>"; };
 		5F76C89811F52DFA00713BBA /* MKPinAnnotationColorGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MKPinAnnotationColorGreen.png; sourceTree = "<group>"; };
 		5F76C89911F52DFA00713BBA /* MKPinAnnotationColorPurple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MKPinAnnotationColorPurple.png; sourceTree = "<group>"; };
@@ -366,16 +365,16 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5F84F10911F21B88008D3A32 /* MapKit.html */,
 				5F585AAD121231B6005F437E /* Animations.css */,
 				5F585AAE121231B6005F437E /* Stylesheet.css */,
+				1F1810AA16E7E9230066AD37 /* MapKit.js */,
+				5F585A5C12110FE6005F437E /* TransparentPixel.png */,
 				5F19A0471208F9260083FE72 /* License.rtf */,
 				5F19A0481208F9260083FE72 /* Release Notes.rtf */,
 				5F76C89811F52DFA00713BBA /* MKPinAnnotationColorGreen.png */,
 				5F76C89911F52DFA00713BBA /* MKPinAnnotationColorPurple.png */,
 				5F76C87F11F52BFC00713BBA /* MKPinAnnotationColorRed.png */,
-				5F76C82011F4F85E00713BBA /* MarkerTest.png */,
-				5F585A5C12110FE6005F437E /* TransparentPixel.png */,
-				5F84F10911F21B88008D3A32 /* MapKit.html */,
 				5F6EF18711F13FA40077E84F /* MapKit-Info.plist */,
 			);
 			path = Resources;
@@ -843,7 +842,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F76C83A11F4FC8F00713BBA /* MarkerTest.png in Resources */,
 				5F6EF14411F13B4B0077E84F /* MainMenu.xib in Resources */,
 				5F87D82F131C825B00634ACD /* MapViewAdditions.css in Resources */,
 			);
@@ -854,7 +852,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F84F10A11F21B88008D3A32 /* MapKit.html in Resources */,
-				5F76C82111F4F85E00713BBA /* MarkerTest.png in Resources */,
+				1F58F50A16EA629100817438 /* MapKit.js in Resources */,
 				5F76C88011F52BFC00713BBA /* MKPinAnnotationColorRed.png in Resources */,
 				5F76C89A11F52DFA00713BBA /* MKPinAnnotationColorGreen.png in Resources */,
 				5F76C89B11F52DFA00713BBA /* MKPinAnnotationColorPurple.png in Resources */,

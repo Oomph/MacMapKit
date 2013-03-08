@@ -57,7 +57,7 @@
 
 - (NSString *)viewPrototypeName
 {
-    return @"AnnotationOverlay";
+    return @"AnnotationOverlayView";
 }
 
 - (NSDictionary *)options
