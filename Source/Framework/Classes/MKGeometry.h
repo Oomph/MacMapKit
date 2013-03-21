@@ -64,19 +64,19 @@ typedef CGFloat MKZoomScale;
 extern const MKMapSize MKMapSizeWorld;
 // The rect that contains every map point in the world.
 extern  const MKMapRect MKMapRectWorld;
-
+*/
  
 // Conversion between unprojected and projected coordinates
 extern  MKMapPoint MKMapPointForCoordinate(CLLocationCoordinate2D coordinate);
 extern  CLLocationCoordinate2D MKCoordinateForMapPoint(MKMapPoint mapPoint);
 
+/*
 // Conversion between distances and projected coordinates
 extern  CLLocationDistance MKMetersPerMapPointAtLatitude(CLLocationDegrees latitude);
-extern  double MKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude);
+extern  double MKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude);*/
 
-extern  CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b);
-
-extern  const MKMapRect MKMapRectNull;*/
+extern CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b);
+/*extern  const MKMapRect MKMapRectNull;*/
 
 // Geometric operations on MKMapPoint/Size/Rect.  See CGGeometry.h for 
 // information on the CGFloat versions of these functions.
