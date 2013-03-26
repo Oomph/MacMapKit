@@ -89,12 +89,12 @@
 
 - (NSArray *)pathForPolygon:(MKPolygon *)aPolygon webScriptObject:(WebScriptObject *)webScriptObject
 {
-    CLLocationCoordinate2D *coordinates = malloc(sizeof(CLLocationCoordinate2D) * aPolygon.coordinateCount);
-    NSRange range = NSMakeRange(0, aPolygon.coordinateCount);
+    CLLocationCoordinate2D *coordinates = malloc(sizeof(CLLocationCoordinate2D) * aPolygon.pointCount);
+    NSRange range = NSMakeRange(0, aPolygon.pointCount);
     [aPolygon getCoordinates:coordinates range:range];
     NSMutableArray *newPath = [NSMutableArray array];
     
-    for (int i = 0; i< aPolygon.coordinateCount; i++)
+    for (int i = 0; i< aPolygon.pointCount; i++)
     {
         CLLocationCoordinate2D coordinate = coordinates[i];
         NSString *script = [NSString stringWithFormat:@"new google.maps.LatLng(%f, %f);", coordinate.latitude, coordinate.longitude];

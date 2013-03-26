@@ -29,7 +29,7 @@
 
 - (void)dealloc
 {
-    free(coordinates);
+    free(points);
     [super dealloc];
 }
 
@@ -39,12 +39,12 @@
 {
     if (self = [super init])
     {
-        coordinates = malloc(sizeof(CLLocationCoordinate2D) * count);
+        points = malloc(sizeof(MKMapPoint) * count);
         for (int i = 0; i < count; i++)
         {
-            coordinates[i] = coords[i];
+            points[i] = MKMapPointForCoordinate(coords[i]);
         }
-        coordinateCount = count;
+        pointCount = count;
     }
     return self;
 }

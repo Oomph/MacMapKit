@@ -50,12 +50,12 @@
 {
     if (!path)
     {
-        CLLocationCoordinate2D *coordinates = malloc(sizeof(CLLocationCoordinate2D) * [self polyline].coordinateCount);
-        NSRange range = NSMakeRange(0, [self polyline].coordinateCount);
+        CLLocationCoordinate2D *coordinates = malloc(sizeof(CLLocationCoordinate2D) * [self polyline].pointCount);
+        NSRange range = NSMakeRange(0, [self polyline].pointCount);
         [[self polyline] getCoordinates:coordinates range:range];
         NSMutableArray *newPath = [NSMutableArray array];
 
-        for (int i = 0; i< [self polyline].coordinateCount; i++)
+        for (int i = 0; i< [self polyline].pointCount; i++)
         {
             CLLocationCoordinate2D coordinate = coordinates[i];
             NSString *script = [NSString stringWithFormat:@"new google.maps.LatLng(%f, %f);", coordinate.latitude, coordinate.longitude];
