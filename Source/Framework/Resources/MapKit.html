@@ -575,8 +575,10 @@ window.onwebkitanimationend =  function(event) {
       var ne = new google.maps.LatLng(centerLatitude + latitudeDelta/2.0 , centerLongitude + longitudeDelta/2.0);
       var center = new google.maps.LatLng(centerLatitude, centerLongitude);
       var bounds = new google.maps.LatLngBounds(sw, ne);
-      if (animated == true)
-        map.panToBounds(bounds);
+      if (animated == true) {
+		  map.panTo(center);
+		  map.fitBounds(bounds);
+	  }
       else
         map.fitBounds(bounds);
   }
