@@ -10,6 +10,8 @@
 
 #define MERCATOR_OFFSET 268435456
 #define MERCATOR_RADIUS (MERCATOR_OFFSET/M_PI)
+#define WGS84_RADIUS 6378137
+#define POINTS_PER_METER (MERCATOR_RADIUS / WGS84_RADIUS)
 
 // the min latitude based on the mercator projection
 double const MIN_LATITUDE = -85.05112877;
@@ -69,6 +71,14 @@ CLLocationCoordinate2D MKCoordinateForMapPoint(MKMapPoint mapPoint)
     CLLocationDegrees longitude = MIN(MAX(MKGeometryPixelSpaceXToLongitude(x), MIN_LONGITUDE), MAX_LONGITUDE);
     
     return CLLocationCoordinate2DMake(latitude, longitude);
+}
+
+CLLocationDistance MKMetersPerMapPointAtLatitude(CLLocationDegrees latitude) {
+    return 1 / MKMapPointsPerMeterAtLatitude(latitude);
+}
+
+double MKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude) {
+    return POINTS_PER_METER / cos(latitude * M_PI / 180.0);
 }
 
 CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b)

@@ -71,10 +71,10 @@ MK_EXTERN  const MKMapRect MKMapRectWorld;*/
 MK_EXTERN  MKMapPoint MKMapPointForCoordinate(CLLocationCoordinate2D coordinate);
 MK_EXTERN  CLLocationCoordinate2D MKCoordinateForMapPoint(MKMapPoint mapPoint);
 
-/*
+
 // Conversion between distances and projected coordinates
 MK_EXTERN  CLLocationDistance MKMetersPerMapPointAtLatitude(CLLocationDegrees latitude);
-MK_EXTERN  double MKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude);*/
+MK_EXTERN  double MKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude);
 
 MK_EXTERN  CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b);
 
