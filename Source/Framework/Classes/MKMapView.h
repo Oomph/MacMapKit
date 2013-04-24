@@ -46,6 +46,7 @@
 @property(nonatomic) MKMapType mapType;
 @property(nonatomic, readonly) MKUserLocation *userLocation;
 @property(nonatomic) MKCoordinateRegion region;
+@property(nonatomic) MKMapRect visibleMapRect;
 @property(nonatomic) CLLocationCoordinate2D centerCoordinate;
 @property(nonatomic) BOOL showsUserLocation;
 @property(nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
@@ -58,6 +59,8 @@
 
 - (void)setCenterCoordinate:(CLLocationCoordinate2D)coordinate animated:(BOOL)animated;
 - (void)setRegion:(MKCoordinateRegion)region animated:(BOOL)animated;
+- (void)setVisibleMapRect:(MKMapRect)mapRect animated:(BOOL)animate;
+- (void)setVisibleMapRect:(MKMapRect)mapRect edgePadding:(NSEdgeInsets)insets animated:(BOOL)animate;
 
 // Overlays
 - (void)addOverlay:(id < MKOverlay >)overlay;

@@ -149,10 +149,11 @@ static inline NSString *MKStringFromMapRect(MKMapRect rect) {
 
 MK_EXTERN MKMapRect MKMapRectUnion(MKMapRect rect1, MKMapRect rect2);
 
-/*
+
 MK_EXTERN MKMapRect MKMapRectIntersection(MKMapRect rect1, MKMapRect rect2);
 MK_EXTERN MKMapRect MKMapRectInset(MKMapRect rect, double dx, double dy);
 MK_EXTERN MKMapRect MKMapRectOffset(MKMapRect rect, double dx, double dy);
+/*
 MK_EXTERN void MKMapRectDivide(MKMapRect rect, MKMapRect *slice, MKMapRect *remainder, double amount, CGRectEdge edge);*/
 
 MK_EXTERN BOOL MKMapRectContainsPoint(MKMapRect rect, MKMapPoint point);

@@ -216,6 +216,18 @@
     return region;
 }
 
+- (MKMapRect)visibleMapRect {
+    MKCoordinateRegion region = [self region];
+    CLLocationCoordinate2D topLeftCoord = CLLocationCoordinate2DMake(region.center.latitude + region.span.latitudeDelta / 2,
+                                                                     region.center.longitude - region.span.longitudeDelta / 2);
+    CLLocationCoordinate2D bottomRightCoord = CLLocationCoordinate2DMake(region.center.latitude - region.span.latitudeDelta / 2,
+                                                                         region.center.longitude + region.span.longitudeDelta / 2);
+    MKMapPoint topLeft = MKMapPointForCoordinate(topLeftCoord);
+    MKMapPoint bottomRight = MKMapPointForCoordinate(bottomRightCoord);
+    
+    return MKMapRectMake(topLeft.x, topLeft.y, bottomRight.x - topLeft.x, topLeft.y - bottomRight.y);
+}
+
 - (void)setRegion:(MKCoordinateRegion)region
 {
     [self setRegion:region animated: NO];
@@ -236,6 +248,22 @@
     [webScriptObject callWebScriptMethod:@"setRegionAnimated" withArguments:args];
     [self didChangeValueForKey:@"centerCoordinate"];
     [self delegateRegionDidChangeAnimated:animated];
+}
+
+- (void)setVisibleMapRect:(MKMapRect)visibleMapRect {
+    [self setRegion:MKCoordinateRegionForMapRect(visibleMapRect) animated:NO];
+}
+
+- (void)setVisibleMapRect:(MKMapRect)mapRect animated:(BOOL)animate {
+    [self setRegion:MKCoordinateRegionForMapRect(mapRect) animated:animate];
+}
+
+- (void)setVisibleMapRect:(MKMapRect)mapRect edgePadding:(NSEdgeInsets)insets animated:(BOOL)animate {
+    MKMapRect paddedRect = MKMapRectMake(mapRect.origin.x - insets.left,
+                                         mapRect.origin.y - insets.top,
+                                         mapRect.size.width + (insets.left + insets.right),
+                                         mapRect.size.height + (insets.bottom + insets.top));
+    [self setRegion:MKCoordinateRegionForMapRect(paddedRect) animated:animate];
 }
 
 - (void)setShowsUserLocation:(BOOL)show

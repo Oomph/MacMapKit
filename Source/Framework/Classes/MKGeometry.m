@@ -110,6 +110,28 @@ MKMapRect MKMapRectUnion(MKMapRect rect1, MKMapRect rect2)
     return MKMapRectMake(minX, minY, maxX - minX, maxY-minY);
 }
 
+MKMapRect MKMapRectIntersection(MKMapRect rect1, MKMapRect rect2)
+{
+    NSRect aRect = NSMakeRect(rect1.origin.x, rect1.origin.y, rect1.size.width, rect1.size.height);
+    NSRect bRect = NSMakeRect(rect2.origin.x, rect2.origin.y, rect2.size.width, rect2.size.height);
+    NSRect intersection = NSIntersectionRect(aRect, bRect);
+    return MKMapRectMake(intersection.origin.x, intersection.origin.y, intersection.size.width, intersection.size.height);
+}
+
+MKMapRect MKMapRectInset(MKMapRect rect, double dx, double dy)
+{
+    NSRect aRect = NSMakeRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+    aRect = NSInsetRect(aRect, dx, dy);
+    return MKMapRectMake(aRect.origin.x, aRect.origin.y, aRect.size.width, aRect.size.height);
+}
+
+MKMapRect MKMapRectOffset(MKMapRect rect, double dx, double dy)
+{
+    NSRect aRect = NSMakeRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+    aRect = NSOffsetRect(aRect, dx, dy);
+    return MKMapRectMake(aRect.origin.x, aRect.origin.y, aRect.size.width, aRect.size.height);
+}
+
 BOOL MKMapRectContainsPoint(MKMapRect rect, MKMapPoint point)
 {
     if (rect.origin.x <= point.x && (rect.origin.x + rect.size.width) >= point.x &&
