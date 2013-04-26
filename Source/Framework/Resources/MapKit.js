@@ -704,7 +704,8 @@
                 ne = new g.maps.LatLng(centerLatitude + latitudeDelta / 2.0, centerLongitude + longitudeDelta / 2.0),
                 bounds = new g.maps.LatLngBounds(sw, ne);
             if (animated === true) {
-                w.map.panToBounds(bounds);
+                w.map.panTo(center);
+                w.map.fitBounds(bounds);
             } else {
                 w.map.fitBounds(bounds);
             }
