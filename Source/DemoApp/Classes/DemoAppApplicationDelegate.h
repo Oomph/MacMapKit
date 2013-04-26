@@ -12,7 +12,7 @@
 @class MKMapView;
 
 @interface DemoAppApplicationDelegate : NSObject <NSApplicationDelegate, MKMapViewDelegate, MKReverseGeocoderDelegate, MKGeocoderDelegate> {
-    NSWindow *window;
+    NSWindow * __unsafe_unretained window;
     IBOutlet MKMapView *mapView;
     IBOutlet NSTextField *addressTextField;
     NSNumber *circleRadius;
@@ -23,7 +23,7 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
-@property (retain) NSString *pinTitle;
+@property (strong) NSString *pinTitle;
 
 - (IBAction)setMapType:(id)sender;
 - (IBAction)addCircle:(id)sender;

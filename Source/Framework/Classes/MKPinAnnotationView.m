@@ -23,6 +23,13 @@
     return self;
 }
 
+- (NSDictionary *)options
+{
+    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithDictionary:[super options]];
+    [options setObject:[NSNumber numberWithBool:animatesDrop] forKey:@"animatesDrop"];
+    return options;
+}
+
 - (NSString *)imageUrl
 {
     NSBundle *bundle = [NSBundle bundleForClass:[MKPinAnnotationView class]];

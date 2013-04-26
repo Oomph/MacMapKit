@@ -20,6 +20,11 @@
 // NSControl
 - (void)takeStringValueFrom:(id)sender;
 
+// Easy zooming
+- (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate
+                  zoomLevel:(NSUInteger)zoomLevel
+                   animated:(BOOL)animated;
+
 - (void)close;
 
 @end

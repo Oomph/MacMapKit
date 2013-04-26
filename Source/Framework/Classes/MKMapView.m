@@ -7,25 +7,81 @@
 //
 
 #import "MKMapView.h"
-#import "MKMapView+Private.h"
-#import "JSON.h"
-#import <MapKit/MKUserLocation.h>
-#import "MKUserLocation+Private.h"
-#import <MapKit/MKCircleView.h>
-#import <MapKit/MKCircle.h>
-#import <MapKit/MKPolyline.h>
-#import <MapKit/MKPolygon.h>
-#import <MapKit/MKAnnotationView.h>
-#import <MapKit/MKPointAnnotation.h>
 #import "MKMapView+DelegateWrappers.h"
 #import "MKMapView+WebViewIntegration.h"
+#import "JSON.h"
+#import "MKUserLocation.h"
+#import "MKUserLocation+Project.h"
+#import "MKCircleView.h"
+#import "MKCircle.h"
+#import "MKPolyline.h"
+#import "MKPolygon.h"
+#import "MKAnnotationView.h"
+#import "MKPointAnnotation.h"
 #import "MKWebView.h"
+
+@interface MKMapView ()
+
+- (void)customInit;
++ (NSMapTable *)mapTableWithStrongToStrongObjects;
+
+@end
 
 
 @implementation MKMapView
 
 @synthesize delegate, mapType, userLocation, showsUserLocation;
 
+- (void)customInit
+{
+    // Initialization code here.
+    NSString *applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+	if (applicationName == nil)
+		applicationName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
+    
+    webView = [[MKWebView alloc] initWithFrame:[self bounds]];
+    [webView setGroupName:@"Group"];
+    [webView setFrameLoadDelegate:self];
+    [webView setUIDelegate:self];
+    [webView setPolicyDelegate:self];
+    [webView setMaintainsBackForwardList:NO];
+	[webView setCustomUserAgent:[NSString stringWithFormat:@"%@ AppleWebKit", applicationName]];
+    [[[webView mainFrame] frameView] setAllowsScrolling:NO];
+    [webView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    [self addSubview:webView];
+	
+    // Create the overlay data structures
+    overlays = [[NSMutableArray array] retain];
+    
+    if ([[NSMapTable class] respondsToSelector:@selector(strongToStrongObjectsMapTable)]) {
+        overlayViews = [[NSMapTable strongToStrongObjectsMapTable] retain];
+        overlayScriptObjects = [[NSMapTable strongToStrongObjectsMapTable] retain];
+    } else {
+        overlayViews = [[MKMapView mapTableWithStrongToStrongObjects] retain];
+        overlayScriptObjects = [[MKMapView mapTableWithStrongToStrongObjects] retain];
+    }
+    
+    // Create the annotation data structures
+    annotations = [[NSMutableArray array] retain];
+    selectedAnnotations = [[NSMutableArray array] retain];
+    if ([[NSMapTable class] respondsToSelector:@selector(strongToStrongObjectsMapTable)]) {
+        annotationViews = [[NSMapTable strongToStrongObjectsMapTable] retain];
+        annotationScriptObjects = [[NSMapTable strongToStrongObjectsMapTable] retain];
+    } else {
+        annotationViews = [[MKMapView mapTableWithStrongToStrongObjects] retain];
+        annotationScriptObjects = [[MKMapView mapTableWithStrongToStrongObjects] retain];
+    }
+    
+    [self loadMapKitHtml];
+    
+    // Create a user location
+    userLocation = [[MKUserLocation alloc] init];
+}
+
++ (NSMapTable *)mapTableWithStrongToStrongObjects
+{
+    return [NSMapTable mapTableWithStrongToStrongObjects];
+}
 
 - (id)initWithFrame:(NSRect)frame {
     if (self = [super initWithFrame:frame]) 
@@ -101,6 +157,10 @@
     NSString *json = [webScriptObject evaluateWebScript:@"getCenterCoordinate()"];
     if ([json isKindOfClass:[NSString class]])
     {
+        if ([json isKindOfClass:[WebUndefined class]]) {
+            NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+        }
+        
         NSDictionary *latlong = [json JSONValue];
         latitude = [latlong objectForKey:@"latitude"];
         longitude = [latlong objectForKey:@"longitude"];
@@ -136,6 +196,11 @@
 {
     WebScriptObject *webScriptObject = [webView windowScriptObject];
     NSString *json = [webScriptObject evaluateWebScript:@"getRegion()"];
+    
+    if ([json isKindOfClass:[WebUndefined class]]) {
+        NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+    }
+    
     NSDictionary *regionDict = [json JSONValue];
     
     NSNumber *centerLatitude = [regionDict valueForKeyPath:@"center.latitude"];
@@ -149,6 +214,18 @@
     region.span.latitudeDelta = [latitudeDelta doubleValue];
     region.span.longitudeDelta = [longitudeDelta doubleValue];
     return region;
+}
+
+- (MKMapRect)visibleMapRect {
+    MKCoordinateRegion region = [self region];
+    CLLocationCoordinate2D topLeftCoord = CLLocationCoordinate2DMake(region.center.latitude + region.span.latitudeDelta / 2,
+                                                                     region.center.longitude - region.span.longitudeDelta / 2);
+    CLLocationCoordinate2D bottomRightCoord = CLLocationCoordinate2DMake(region.center.latitude - region.span.latitudeDelta / 2,
+                                                                         region.center.longitude + region.span.longitudeDelta / 2);
+    MKMapPoint topLeft = MKMapPointForCoordinate(topLeftCoord);
+    MKMapPoint bottomRight = MKMapPointForCoordinate(bottomRightCoord);
+    
+    return MKMapRectMake(topLeft.x, topLeft.y, bottomRight.x - topLeft.x, topLeft.y - bottomRight.y);
 }
 
 - (void)setRegion:(MKCoordinateRegion)region
@@ -171,6 +248,22 @@
     [webScriptObject callWebScriptMethod:@"setRegionAnimated" withArguments:args];
     [self didChangeValueForKey:@"centerCoordinate"];
     [self delegateRegionDidChangeAnimated:animated];
+}
+
+- (void)setVisibleMapRect:(MKMapRect)visibleMapRect {
+    [self setRegion:MKCoordinateRegionForMapRect(visibleMapRect) animated:NO];
+}
+
+- (void)setVisibleMapRect:(MKMapRect)mapRect animated:(BOOL)animate {
+    [self setRegion:MKCoordinateRegionForMapRect(mapRect) animated:animate];
+}
+
+- (void)setVisibleMapRect:(MKMapRect)mapRect edgePadding:(NSEdgeInsets)insets animated:(BOOL)animate {
+    MKMapRect paddedRect = MKMapRectMake(mapRect.origin.x - insets.left,
+                                         mapRect.origin.y - insets.top,
+                                         mapRect.size.width + (insets.left + insets.right),
+                                         mapRect.size.height + (insets.bottom + insets.top));
+    [self setRegion:MKCoordinateRegionForMapRect(paddedRect) animated:animate];
 }
 
 - (void)setShowsUserLocation:(BOOL)show
@@ -527,6 +620,10 @@
     NSNumber *y = nil;
     if ([json isKindOfClass:[NSString class]])
     {
+        if ([json isKindOfClass:[WebUndefined class]]) {
+            NSLog(@"calling JSONValue on WebUndefined in %s", __PRETTY_FUNCTION__);
+        }
+        
         NSDictionary *xy = [json JSONValue];
         x = [xy objectForKey:@"x"];
         y = [xy objectForKey:@"y"];
@@ -656,11 +753,17 @@
         [self setMapType:[self mapType]];
         [self setShowsUserLocation:[self showsUserLocation]];
         
-	[self performSelector:@selector(delegateDidFinishLoadingMap) withObject:nil afterDelay:0.5];
+        [self performSelector:@selector(delegateDidFinishLoadingMap) withObject:nil afterDelay:0.5];
     }
 }
 
 #pragma mark WebUIDelegate
+
+- (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id<WebPolicyDecisionListener>)listener
+{
+    [[NSWorkspace sharedWorkspace] openURL:request.URL];
+    [listener ignore];
+}
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
 {

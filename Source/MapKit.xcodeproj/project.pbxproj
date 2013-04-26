@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F55639416AF6B0D0067BD83 /* MKFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F55639316AF6B070067BD83 /* MKFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F55639B16AF6C9D0067BD83 /* MKGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F55639916AF6C750067BD83 /* MKGeometry.m */; };
+		1F5563B816AF7E170067BD83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F5563B616AF7E170067BD83 /* InfoPlist.strings */; };
+		1F5563BB16AF7E170067BD83 /* MKGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5563BA16AF7E170067BD83 /* MKGeometryTests.m */; };
+		1F5563C016AF85070067BD83 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6EF17D11F13F690077E84F /* MapKit.framework */; };
+		1F5563C216AF87820067BD83 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F5563C116AF87820067BD83 /* SenTestingKit.framework */; };
+		1F5563C316AF87A50067BD83 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6EF13B11F13B170077E84F /* Cocoa.framework */; };
+		1F5563C416AF87AB0067BD83 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FBAF80711F14955004753A9 /* CoreLocation.framework */; };
+		1F58F50A16EA629100817438 /* MapKit.js in Resources */ = {isa = PBXBuildFile; fileRef = 1F1810AA16E7E9230066AD37 /* MapKit.js */; };
 		5F199EE8120257FB0083FE72 /* MapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6EF17D11F13F690077E84F /* MapKit.framework */; };
 		5F19A03E1208F6DE0083FE72 /* MKMapView+MapKitPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F19A03D1208F6DE0083FE72 /* MKMapView+MapKitPlugin.m */; };
 		5F19A0491208F9260083FE72 /* License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5F19A0471208F9260083FE72 /* License.rtf */; };
@@ -24,8 +33,6 @@
 		5F6EF18A11F13FDC0077E84F /* MapKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6EF17D11F13F690077E84F /* MapKit.framework */; };
 		5F76C78911F4EDE000713BBA /* MKView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F76C78711F4EDE000713BBA /* MKView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F76C78A11F4EDE000713BBA /* MKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F76C78811F4EDE000713BBA /* MKView.m */; };
-		5F76C82111F4F85E00713BBA /* MarkerTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C82011F4F85E00713BBA /* MarkerTest.png */; };
-		5F76C83A11F4FC8F00713BBA /* MarkerTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C82011F4F85E00713BBA /* MarkerTest.png */; };
 		5F76C88011F52BFC00713BBA /* MKPinAnnotationColorRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C87F11F52BFC00713BBA /* MKPinAnnotationColorRed.png */; };
 		5F76C89A11F52DFA00713BBA /* MKPinAnnotationColorGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C89811F52DFA00713BBA /* MKPinAnnotationColorGreen.png */; };
 		5F76C89B11F52DFA00713BBA /* MKPinAnnotationColorPurple.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F76C89911F52DFA00713BBA /* MKPinAnnotationColorPurple.png */; };
@@ -38,8 +45,6 @@
 		5F84F25711F3F173008D3A32 /* MKPinAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F84F25511F3F173008D3A32 /* MKPinAnnotationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F84F25811F3F173008D3A32 /* MKPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F84F25611F3F173008D3A32 /* MKPinAnnotationView.m */; };
 		5F87D82F131C825B00634ACD /* MapViewAdditions.css in Resources */ = {isa = PBXBuildFile; fileRef = 5F87D82E131C825B00634ACD /* MapViewAdditions.css */; };
-		5F96B22513BAB9F4000A1E4A /* MKMapView+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F96B22313BAB9F4000A1E4A /* MKMapView+Private.h */; };
-		5F96B22613BAB9F4000A1E4A /* MKMapView+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F96B22413BAB9F4000A1E4A /* MKMapView+Private.m */; };
 		5F9CE3DA12D15F98006354EF /* MKGeocoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F9CE3D812D15F98006354EF /* MKGeocoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F9CE3DB12D15F98006354EF /* MKGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CE3D912D15F98006354EF /* MKGeocoder.m */; };
 		5FB7406F11F8C77C00AB2079 /* MKMapView+DelegateWrappers.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB7406D11F8C77C00AB2079 /* MKMapView+DelegateWrappers.h */; };
@@ -84,8 +89,8 @@
 		5FBAF7D311F1486D004753A9 /* MapKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBAF7C911F1486D004753A9 /* MapKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FBAF7D411F1486D004753A9 /* MKUserLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBAF7CA11F1486D004753A9 /* MKUserLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FBAF7D511F1486D004753A9 /* MKUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBAF7CB11F1486D004753A9 /* MKUserLocation.m */; };
-		5FBAF7D611F1486D004753A9 /* MKUserLocation+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBAF7CC11F1486D004753A9 /* MKUserLocation+Private.h */; settings = {ATTRIBUTES = (); }; };
-		5FBAF7D711F1486D004753A9 /* MKUserLocation+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBAF7CD11F1486D004753A9 /* MKUserLocation+Private.m */; };
+		5FBAF7D611F1486D004753A9 /* MKUserLocation+Project.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBAF7CC11F1486D004753A9 /* MKUserLocation+Project.h */; settings = {ATTRIBUTES = (); }; };
+		5FBAF7D711F1486D004753A9 /* MKUserLocation+Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBAF7CD11F1486D004753A9 /* MKUserLocation+Project.m */; };
 		5FBAF7D811F1486D004753A9 /* MKAnnotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBAF7CE11F1486D004753A9 /* MKAnnotation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FBAF7E511F14889004753A9 /* MKShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FBAF7DA11F14889004753A9 /* MKShape.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FBAF7E611F14889004753A9 /* MKShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBAF7DB11F14889004753A9 /* MKShape.m */; };
@@ -160,6 +165,16 @@
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1F1810AA16E7E9230066AD37 /* MapKit.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = MapKit.js; sourceTree = "<group>"; };
+		1F55639316AF6B070067BD83 /* MKFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKFoundation.h; sourceTree = "<group>"; };
+		1F55639916AF6C750067BD83 /* MKGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGeometry.m; sourceTree = "<group>"; };
+		1F5563A916AF7E170067BD83 /* MapKitFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapKitFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F5563B516AF7E170067BD83 /* MapKitFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapKitFrameworkTests-Info.plist"; sourceTree = "<group>"; };
+		1F5563B716AF7E170067BD83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F5563B916AF7E170067BD83 /* MKGeometryTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKGeometryTests.h; sourceTree = "<group>"; };
+		1F5563BA16AF7E170067BD83 /* MKGeometryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKGeometryTests.m; sourceTree = "<group>"; };
+		1F5563BC16AF7E170067BD83 /* MapKitFrameworkTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapKitFrameworkTests-Prefix.pch"; sourceTree = "<group>"; };
+		1F5563C116AF87820067BD83 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5F19A03D1208F6DE0083FE72 /* MKMapView+MapKitPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+MapKitPlugin.m"; sourceTree = "<group>"; };
 		5F19A0471208F9260083FE72 /* License.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
 		5F19A0481208F9260083FE72 /* Release Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Release Notes.rtf"; sourceTree = "<group>"; };
@@ -180,7 +195,6 @@
 		5F6EF18711F13FA40077E84F /* MapKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MapKit-Info.plist"; sourceTree = "<group>"; };
 		5F76C78711F4EDE000713BBA /* MKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKView.h; sourceTree = "<group>"; };
 		5F76C78811F4EDE000713BBA /* MKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKView.m; sourceTree = "<group>"; };
-		5F76C82011F4F85E00713BBA /* MarkerTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MarkerTest.png; sourceTree = "<group>"; };
 		5F76C87F11F52BFC00713BBA /* MKPinAnnotationColorRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MKPinAnnotationColorRed.png; sourceTree = "<group>"; };
 		5F76C89811F52DFA00713BBA /* MKPinAnnotationColorGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MKPinAnnotationColorGreen.png; sourceTree = "<group>"; };
 		5F76C89911F52DFA00713BBA /* MKPinAnnotationColorPurple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MKPinAnnotationColorPurple.png; sourceTree = "<group>"; };
@@ -192,8 +206,6 @@
 		5F84F25511F3F173008D3A32 /* MKPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPinAnnotationView.h; sourceTree = "<group>"; };
 		5F84F25611F3F173008D3A32 /* MKPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPinAnnotationView.m; sourceTree = "<group>"; };
 		5F87D82E131C825B00634ACD /* MapViewAdditions.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = MapViewAdditions.css; sourceTree = "<group>"; };
-		5F96B22313BAB9F4000A1E4A /* MKMapView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Private.h"; sourceTree = "<group>"; };
-		5F96B22413BAB9F4000A1E4A /* MKMapView+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Private.m"; sourceTree = "<group>"; };
 		5F9CE3D812D15F98006354EF /* MKGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGeocoder.h; sourceTree = "<group>"; };
 		5F9CE3D912D15F98006354EF /* MKGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGeocoder.m; sourceTree = "<group>"; };
 		5FB7406D11F8C77C00AB2079 /* MKMapView+DelegateWrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+DelegateWrappers.h"; sourceTree = "<group>"; };
@@ -239,8 +251,8 @@
 		5FBAF7C911F1486D004753A9 /* MapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapKit.h; sourceTree = "<group>"; };
 		5FBAF7CA11F1486D004753A9 /* MKUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKUserLocation.h; sourceTree = "<group>"; };
 		5FBAF7CB11F1486D004753A9 /* MKUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKUserLocation.m; sourceTree = "<group>"; };
-		5FBAF7CC11F1486D004753A9 /* MKUserLocation+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKUserLocation+Private.h"; sourceTree = "<group>"; };
-		5FBAF7CD11F1486D004753A9 /* MKUserLocation+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKUserLocation+Private.m"; sourceTree = "<group>"; };
+		5FBAF7CC11F1486D004753A9 /* MKUserLocation+Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKUserLocation+Project.h"; sourceTree = "<group>"; };
+		5FBAF7CD11F1486D004753A9 /* MKUserLocation+Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKUserLocation+Project.m"; sourceTree = "<group>"; };
 		5FBAF7CE11F1486D004753A9 /* MKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAnnotation.h; sourceTree = "<group>"; };
 		5FBAF7DA11F14889004753A9 /* MKShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKShape.h; sourceTree = "<group>"; };
 		5FBAF7DB11F14889004753A9 /* MKShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKShape.m; sourceTree = "<group>"; };
@@ -272,6 +284,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1F5563A516AF7E170067BD83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F5563C316AF87A50067BD83 /* Cocoa.framework in Frameworks */,
+				1F5563C416AF87AB0067BD83 /* CoreLocation.framework in Frameworks */,
+				1F5563C216AF87820067BD83 /* SenTestingKit.framework in Frameworks */,
+				1F5563C016AF85070067BD83 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F6EF13311F13B0D0077E84F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,6 +335,7 @@
 				5F6EF13511F13B0D0077E84F /* DemoApp.app */,
 				5F6EF17D11F13F690077E84F /* MapKit.framework */,
 				5FB7435711FE6E4A00AB2079 /* MapKit.ibplugin */,
+				1F5563A916AF7E170067BD83 /* MapKitFrameworkTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,38 +343,38 @@
 		0867D691FE84028FC02AAC07 /* MapKit */ = {
 			isa = PBXGroup;
 			children = (
-				5FE1308615E94B9600265D22 /* CoreFoundation.framework */,
-				5F6EF12411F13A9E0077E84F /* DemoApp */,
 				5F6EF12311F13A920077E84F /* Framework */,
+				1F5563B316AF7E170067BD83 /* FrameworkTests */,
+				5F6EF12411F13A9E0077E84F /* DemoApp */,
 				5FB7434111FE6D5C00AB2079 /* IBPlugin */,
-				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
 			name = MapKit;
 			sourceTree = "<group>";
 		};
-		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
 			);
-			name = "External Frameworks and Libraries";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5F84F10911F21B88008D3A32 /* MapKit.html */,
 				5F585AAD121231B6005F437E /* Animations.css */,
 				5F585AAE121231B6005F437E /* Stylesheet.css */,
+				1F1810AA16E7E9230066AD37 /* MapKit.js */,
+				5F585A5C12110FE6005F437E /* TransparentPixel.png */,
 				5F19A0471208F9260083FE72 /* License.rtf */,
 				5F19A0481208F9260083FE72 /* Release Notes.rtf */,
 				5F76C89811F52DFA00713BBA /* MKPinAnnotationColorGreen.png */,
 				5F76C89911F52DFA00713BBA /* MKPinAnnotationColorPurple.png */,
 				5F76C87F11F52BFC00713BBA /* MKPinAnnotationColorRed.png */,
-				5F76C82011F4F85E00713BBA /* MarkerTest.png */,
-				5F585A5C12110FE6005F437E /* TransparentPixel.png */,
-				5F84F10911F21B88008D3A32 /* MapKit.html */,
 				5F6EF18711F13FA40077E84F /* MapKit-Info.plist */,
 			);
 			path = Resources;
@@ -363,10 +387,10 @@
 				5F84F20B11F3E9C1008D3A32 /* Annotations And Overlays */,
 				5FBAF7A411F147DC004753A9 /* Categories */,
 				5FBAF7A911F147FF004753A9 /* Third Party */,
+				5FBAF7C911F1486D004753A9 /* MapKit.h */,
+				1F55639316AF6B070067BD83 /* MKFoundation.h */,
 				5FBAF7C511F1486D004753A9 /* MKMapView.h */,
 				5FBAF7C611F1486D004753A9 /* MKMapView.m */,
-				5F96B22313BAB9F4000A1E4A /* MKMapView+Private.h */,
-				5F96B22413BAB9F4000A1E4A /* MKMapView+Private.m */,
 				5FB740FD11FB4BD200AB2079 /* MKMapView+Additions.h */,
 				5FB740FE11FB4BD200AB2079 /* MKMapView+Additions.m */,
 				5FB7406D11F8C77C00AB2079 /* MKMapView+DelegateWrappers.h */,
@@ -375,11 +399,11 @@
 				5FB7407611F8C81800AB2079 /* MKMapView+WebViewIntegration.m */,
 				5FBAF7C711F1486D004753A9 /* MKTypes.h */,
 				5FBAF7C811F1486D004753A9 /* MKGeometry.h */,
-				5FBAF7C911F1486D004753A9 /* MapKit.h */,
+				1F55639916AF6C750067BD83 /* MKGeometry.m */,
 				5FBAF7CA11F1486D004753A9 /* MKUserLocation.h */,
 				5FBAF7CB11F1486D004753A9 /* MKUserLocation.m */,
-				5FBAF7CC11F1486D004753A9 /* MKUserLocation+Private.h */,
-				5FBAF7CD11F1486D004753A9 /* MKUserLocation+Private.m */,
+				5FBAF7CC11F1486D004753A9 /* MKUserLocation+Project.h */,
+				5FBAF7CD11F1486D004753A9 /* MKUserLocation+Project.m */,
 				5F39D6FC12B5AB50001B32CD /* MKWebView.h */,
 				5F39D6FD12B5AB50001B32CD /* MKWebView.m */,
 			);
@@ -400,11 +424,34 @@
 		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F5563C116AF87820067BD83 /* SenTestingKit.framework */,
+				5FE1308615E94B9600265D22 /* CoreFoundation.framework */,
 				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
 				D2F7E79907B2D74100F64583 /* CoreData.framework */,
 				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		1F5563B316AF7E170067BD83 /* FrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F5563B916AF7E170067BD83 /* MKGeometryTests.h */,
+				1F5563BA16AF7E170067BD83 /* MKGeometryTests.m */,
+				1F5563B416AF7E170067BD83 /* Supporting Files */,
+			);
+			name = FrameworkTests;
+			path = MapKitFrameworkTests;
+			sourceTree = "<group>";
+		};
+		1F5563B416AF7E170067BD83 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F5563B516AF7E170067BD83 /* MapKitFrameworkTests-Info.plist */,
+				1F5563B616AF7E170067BD83 /* InfoPlist.strings */,
+				1F5563BC16AF7E170067BD83 /* MapKitFrameworkTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		5F6EF12311F13A920077E84F /* Framework */ = {
@@ -644,7 +691,7 @@
 				5FBAF7D211F1486D004753A9 /* MKGeometry.h in Headers */,
 				5FBAF7D311F1486D004753A9 /* MapKit.h in Headers */,
 				5FBAF7D411F1486D004753A9 /* MKUserLocation.h in Headers */,
-				5FBAF7D611F1486D004753A9 /* MKUserLocation+Private.h in Headers */,
+				5FBAF7D611F1486D004753A9 /* MKUserLocation+Project.h in Headers */,
 				5FBAF7D811F1486D004753A9 /* MKAnnotation.h in Headers */,
 				5FBAF7E511F14889004753A9 /* MKShape.h in Headers */,
 				5FBAF7E711F14889004753A9 /* MKCircle.h in Headers */,
@@ -669,13 +716,31 @@
 				5FB7417311FD53B500AB2079 /* MKPlacemark+Private.h in Headers */,
 				5F39D6FE12B5AB50001B32CD /* MKWebView.h in Headers */,
 				5F9CE3DA12D15F98006354EF /* MKGeocoder.h in Headers */,
-				5F96B22513BAB9F4000A1E4A /* MKMapView+Private.h in Headers */,
+				1F55639416AF6B0D0067BD83 /* MKFoundation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1F5563A816AF7E170067BD83 /* MapKitFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F5563BD16AF7E170067BD83 /* Build configuration list for PBXNativeTarget "MapKitFrameworkTests" */;
+			buildPhases = (
+				1F5563A416AF7E170067BD83 /* Sources */,
+				1F5563A516AF7E170067BD83 /* Frameworks */,
+				1F5563A616AF7E170067BD83 /* Resources */,
+				1F5563A716AF7E170067BD83 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapKitFrameworkTests;
+			productName = MapKitFrameworkTests;
+			productReference = 1F5563A916AF7E170067BD83 /* MapKitFrameworkTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		5F6EF13411F13B0D0077E84F /* DemoApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5F6EF13A11F13B0D0077E84F /* Build configuration list for PBXNativeTarget "DemoApp" */;
@@ -738,7 +803,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "MapKit" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -749,6 +814,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* MapKit */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
@@ -758,16 +824,24 @@
 				5F6EF13411F13B0D0077E84F /* DemoApp */,
 				5F6EF17C11F13F690077E84F /* MapKitFramework */,
 				5FB7435611FE6E4A00AB2079 /* MapKit */,
+				1F5563A816AF7E170067BD83 /* MapKitFrameworkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1F5563A616AF7E170067BD83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F5563B816AF7E170067BD83 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F6EF13111F13B0D0077E84F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F76C83A11F4FC8F00713BBA /* MarkerTest.png in Resources */,
 				5F6EF14411F13B4B0077E84F /* MainMenu.xib in Resources */,
 				5F87D82F131C825B00634ACD /* MapViewAdditions.css in Resources */,
 			);
@@ -778,7 +852,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F84F10A11F21B88008D3A32 /* MapKit.html in Resources */,
-				5F76C82111F4F85E00713BBA /* MarkerTest.png in Resources */,
+				1F58F50A16EA629100817438 /* MapKit.js in Resources */,
 				5F76C88011F52BFC00713BBA /* MKPinAnnotationColorRed.png in Resources */,
 				5F76C89A11F52DFA00713BBA /* MKPinAnnotationColorGreen.png in Resources */,
 				5F76C89B11F52DFA00713BBA /* MKPinAnnotationColorPurple.png in Resources */,
@@ -803,7 +877,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F5563A716AF7E170067BD83 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		1F5563A416AF7E170067BD83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F5563BB16AF7E170067BD83 /* MKGeometryTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5F6EF13211F13B0D0077E84F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -826,7 +924,7 @@
 				5FBAF7C411F1482E004753A9 /* SBJsonWriter.m in Sources */,
 				5FBAF7D011F1486D004753A9 /* MKMapView.m in Sources */,
 				5FBAF7D511F1486D004753A9 /* MKUserLocation.m in Sources */,
-				5FBAF7D711F1486D004753A9 /* MKUserLocation+Private.m in Sources */,
+				5FBAF7D711F1486D004753A9 /* MKUserLocation+Project.m in Sources */,
 				5FBAF7E611F14889004753A9 /* MKShape.m in Sources */,
 				5FBAF7E811F14889004753A9 /* MKCircle.m in Sources */,
 				5FBAF7EB11F14889004753A9 /* MKMultiPoint.m in Sources */,
@@ -849,7 +947,7 @@
 				5FB7417411FD53B500AB2079 /* MKPlacemark+Private.m in Sources */,
 				5F39D6FF12B5AB50001B32CD /* MKWebView.m in Sources */,
 				5F9CE3DB12D15F98006354EF /* MKGeocoder.m in Sources */,
-				5F96B22613BAB9F4000A1E4A /* MKMapView+Private.m in Sources */,
+				1F55639B16AF6C9D0067BD83 /* MKGeometry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,6 +976,17 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		1F5563B616AF7E170067BD83 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F5563B716AF7E170067BD83 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		1DEB91B208733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -887,6 +996,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -899,7 +1009,61 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1F5563BE16AF7E170067BD83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MapKitFrameworkTests/MapKitFrameworkTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "MapKitFrameworkTests/MapKitFrameworkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1F5563BF16AF7E170067BD83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MapKitFrameworkTests/MapKitFrameworkTests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "MapKitFrameworkTests/MapKitFrameworkTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -907,16 +1071,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_GC = required;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DemoApp/DemoApp_Prefix.pch;
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -931,15 +1097,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_OBJC_GC = required;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DemoApp/DemoApp_Prefix.pch;
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -955,6 +1123,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -965,7 +1134,6 @@
 				);
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -986,6 +1154,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -996,7 +1165,6 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
@@ -1017,6 +1185,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1046,6 +1215,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1078,6 +1248,15 @@
 			buildConfigurations = (
 				1DEB91B208733DA50010E9CD /* Debug */,
 				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F5563BD16AF7E170067BD83 /* Build configuration list for PBXNativeTarget "MapKitFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F5563BE16AF7E170067BD83 /* Debug */,
+				1F5563BF16AF7E170067BD83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

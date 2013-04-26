@@ -1,5 +1,5 @@
 //
-//  MKUserLocation+Private.h
+//  MKUserLocation+Project.h
 //  MapKit
 //
 //  Created by Rick Fillion on 7/11/10.
@@ -11,7 +11,7 @@
 
 @class CLLocation;
 
-@interface MKUserLocation (Private)
+@interface MKUserLocation (Project)
 
 - (void)_setLocation:(CLLocation *)aLocation;
 - (void)_setUpdating:(BOOL)value;

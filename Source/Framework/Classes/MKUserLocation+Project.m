@@ -1,15 +1,15 @@
 //
-//  MKUserLocation+Private.m
+//  MKUserLocation+Project.m
 //  MapKit
 //
 //  Created by Rick Fillion on 7/11/10.
 //  Copyright 2010 Centrix.ca. All rights reserved.
 //
 
-#import "MKUserLocation+Private.h"
+#import "MKUserLocation+Project.h"
 
 
-@implementation MKUserLocation (Private)
+@implementation MKUserLocation (Project)
 
 - (void)_setLocation:(CLLocation *)aLocation
 {
