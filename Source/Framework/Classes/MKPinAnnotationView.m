@@ -46,4 +46,13 @@
     return [url absoluteString];
 }
 
+
+- (NSDictionary *)options {
+    NSMutableDictionary* mutableOptions = [[super options] mutableCopy];
+
+    [mutableOptions setObject:[NSNumber numberWithBool:animatesDrop] forKey:@"dropAnimation"];
+
+    return [[mutableOptions copy] autorelease];
+}
+
 @end
