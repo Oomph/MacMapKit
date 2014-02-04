@@ -14,8 +14,9 @@
 
 @interface MKCircle : MKShape <MKOverlay> {
     @package
-    CLLocationCoordinate2D coordinate;
-    CLLocationDistance radius;
+    CLLocationCoordinate2D  coordinate;
+    CLLocationDistance      radius;
+    MKMapRect               boundingMapRect;
 }
 
 + (MKCircle *)circleWithCenterCoordinate:(CLLocationCoordinate2D)coord radius:(CLLocationDistance)radius;
@@ -23,5 +24,6 @@
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly) CLLocationDistance radius;
 @property (nonatomic, readonly) MKCoordinateRegion region;
+@property (nonatomic, readonly) MKMapRect boundingMapRect; 
 
 @end

@@ -19,4 +19,6 @@
 // From MKAnnotation, for areas this should return the centroid of the area.
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
+@property (nonatomic, readonly) MKMapRect boundingMapRect;
+
 @end

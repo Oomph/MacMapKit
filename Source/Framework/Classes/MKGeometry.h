@@ -60,7 +60,9 @@ typedef struct {
 // 0.5, 1 screen point = 2 MKMapPoints.
 typedef CGFloat MKZoomScale;
 
-// The map point for the coordinate (-90,180)
+ */
+
+
 extern const MKMapSize MKMapSizeWorld;
 // The rect that contains every map point in the world.
 extern  const MKMapRect MKMapRectWorld;
@@ -70,10 +72,12 @@ extern  const MKMapRect MKMapRectWorld;
 extern  MKMapPoint MKMapPointForCoordinate(CLLocationCoordinate2D coordinate);
 extern  CLLocationCoordinate2D MKCoordinateForMapPoint(MKMapPoint mapPoint);
 
+
 // Conversion between distances and projected coordinates
 extern  CLLocationDistance MKMetersPerMapPointAtLatitude(CLLocationDegrees latitude);
 extern  double MKMapPointsPerMeterAtLatitude(CLLocationDegrees latitude);
 
+/*
 extern  CLLocationDistance MKMetersBetweenMapPoints(MKMapPoint a, MKMapPoint b);
 
 extern  const MKMapRect MKMapRectNull;*/
@@ -154,9 +158,11 @@ extern void MKMapRectDivide(MKMapRect rect, MKMapRect *slice, MKMapRect *remaind
 extern BOOL MKMapRectContainsPoint(MKMapRect rect, MKMapPoint point);
 extern BOOL MKMapRectContainsRect(MKMapRect rect1, MKMapRect rect2);
 extern BOOL MKMapRectIntersectsRect(MKMapRect rect1, MKMapRect rect2);
+*/
 
 extern MKCoordinateRegion MKCoordinateRegionForMapRect(MKMapRect rect);
 
+/*
 extern BOOL MKMapRectSpans180thMeridian(MKMapRect rect);
 // For map rects that span the 180th meridian, this returns the portion of the rect
 // that lies outside of the world rect wrapped around to the other side of the

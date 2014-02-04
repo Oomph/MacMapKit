@@ -59,6 +59,12 @@
 - (void)setCenterCoordinate:(CLLocationCoordinate2D)coordinate animated:(BOOL)animated;
 - (void)setRegion:(MKCoordinateRegion)region animated:(BOOL)animated;
 
+// Access the visible region of the map in projected coordinates.
+@property (nonatomic) MKMapRect visibleMapRect;
+- (void)setVisibleMapRect:(MKMapRect)mapRect animated:(BOOL)animate;
+
+
+
 // Overlays
 - (void)addOverlay:(id < MKOverlay >)overlay;
 - (void)addOverlays:(NSArray *)overlays;

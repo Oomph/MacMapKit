@@ -24,7 +24,7 @@
 
 @implementation MKMapView
 
-@synthesize delegate, mapType, userLocation, showsUserLocation;
+@synthesize delegate, mapType, userLocation, showsUserLocation,visibleMapRect;
 
 
 - (id)initWithFrame:(NSRect)frame {
@@ -172,6 +172,21 @@
     [self didChangeValueForKey:@"centerCoordinate"];
     [self delegateRegionDidChangeAnimated:animated];
 }
+
+
+- (void)setVisibleMapRect:(MKMapRect)mapRect animated:(BOOL)animate
+{
+    [self willChangeValueForKey:@"visibleMapRect"];
+    visibleMapRect = mapRect;
+    
+    [self setRegion:MKCoordinateRegionForMapRect(visibleMapRect) animated:NO];
+    
+    [self didChangeValueForKey:@"visibleMapRect"];
+    
+}
+
+
+
 
 - (void)setShowsUserLocation:(BOOL)show
 {
