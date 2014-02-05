@@ -22,6 +22,11 @@
     return [[[MKPolyline alloc] initWithCoordinates:coords count:count] autorelease];
 }
 
++ (MKPolyline *)polylineWithPoints:(MKMapPoint *)points count:(NSUInteger)count
+{
+    return [[[MKPolyline alloc] initWithPoints:points count:count] autorelease];
+}
+
 - (CLLocationCoordinate2D) coordinate
 {
     return [super coordinate];
@@ -29,7 +34,7 @@
 
 - (void)dealloc
 {
-    free(coordinates);
+    free(points);
     [super dealloc];
 }
 
@@ -39,12 +44,26 @@
 {
     if (self = [super init])
     {
-        coordinates = malloc(sizeof(CLLocationCoordinate2D) * count);
+        points = malloc(sizeof(MKMapPoint) * count);
         for (int i = 0; i < count; i++)
         {
-            coordinates[i] = coords[i];
+            points[i] = MKMapPointForCoordinate(coords[i]);
         }
-        coordinateCount = count;
+        pointCount = count;
+    }
+    return self;
+}
+
+- (id)initWithPoints:(MKMapPoint *)coords count:(NSUInteger)count
+{
+    if (self = [super init])
+    {
+        points = malloc(sizeof(MKMapPoint) * count);
+        for (int i = 0; i < count; i++)
+        {
+            points[i] = coords[i];
+        }
+        pointCount = count;
     }
     return self;
 }

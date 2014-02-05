@@ -11,15 +11,15 @@
 
 @implementation MKMultiPoint
 
-@synthesize coordinates;
-@synthesize coordinateCount;
+@synthesize points;
+@synthesize pointCount;
 
 
 - (void)getCoordinates:(CLLocationCoordinate2D *)coords range:(NSRange)range
 {
-    for (int i = range.location; i < range.location+range.length; i++)
+    for (int i = range.location; i < MAX(range.location+range.length, pointCount); i++)
     {
-        coords[i] = coordinates[i];
+        coords[i] = MKCoordinateForMapPoint(points[i]);
     }
 }
 

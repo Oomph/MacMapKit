@@ -13,6 +13,7 @@
 @interface MKPolyline : MKMultiPoint <MKOverlay>
 
 + (MKPolyline *)polylineWithCoordinates:(CLLocationCoordinate2D *)coords count:(NSUInteger)count;
++ (MKPolyline *)polylineWithPoints:(MKMapPoint *)points count:(NSUInteger)count;
 
 @end
 

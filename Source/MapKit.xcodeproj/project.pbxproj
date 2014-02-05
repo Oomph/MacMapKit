@@ -113,6 +113,9 @@
 		5FE1308715E94B9600265D22 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE1308615E94B9600265D22 /* CoreFoundation.framework */; };
 		5FE8314812A60AF600728ECE /* MapKitPluginLibrary.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE8314712A60AF600728ECE /* MapKitPluginLibrary.xib */; };
 		5FE8314C12A60BFF00728ECE /* MKMapViewAttributeInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE8314B12A60BFF00728ECE /* MKMapViewAttributeInspector.xib */; };
+		E60096E51701809F00484C44 /* MKGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = E60096E41701809F00484C44 /* MKGeometry.m */; };
+		E60096E6170180EC00484C44 /* MKGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = E60096E41701809F00484C44 /* MKGeometry.m */; };
+		E60096E7170180EC00484C44 /* MKGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = E60096E41701809F00484C44 /* MKGeometry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,6 +272,7 @@
 		5FE8314712A60AF600728ECE /* MapKitPluginLibrary.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapKitPluginLibrary.xib; sourceTree = "<group>"; };
 		5FE8314B12A60BFF00728ECE /* MKMapViewAttributeInspector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MKMapViewAttributeInspector.xib; sourceTree = "<group>"; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		E60096E41701809F00484C44 /* MKGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGeometry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +379,7 @@
 				5FB7407611F8C81800AB2079 /* MKMapView+WebViewIntegration.m */,
 				5FBAF7C711F1486D004753A9 /* MKTypes.h */,
 				5FBAF7C811F1486D004753A9 /* MKGeometry.h */,
+				E60096E41701809F00484C44 /* MKGeometry.m */,
 				5FBAF7C911F1486D004753A9 /* MapKit.h */,
 				5FBAF7CA11F1486D004753A9 /* MKUserLocation.h */,
 				5FBAF7CB11F1486D004753A9 /* MKUserLocation.m */,
@@ -810,6 +815,7 @@
 			files = (
 				5F6EF15011F13BCB0077E84F /* main.m in Sources */,
 				5F6EF16B11F13CB70077E84F /* DemoAppApplicationDelegate.m in Sources */,
+				E60096E51701809F00484C44 /* MKGeometry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,6 +856,7 @@
 				5F39D6FF12B5AB50001B32CD /* MKWebView.m in Sources */,
 				5F9CE3DB12D15F98006354EF /* MKGeocoder.m in Sources */,
 				5F96B22613BAB9F4000A1E4A /* MKMapView+Private.m in Sources */,
+				E60096E6170180EC00484C44 /* MKGeometry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,6 +867,7 @@
 				5FB7438411FE705E00AB2079 /* MapKitPlugin.m in Sources */,
 				5FB7438811FE70AC00AB2079 /* MKMapViewAttributeInspector.m in Sources */,
 				5F19A03E1208F6DE0083FE72 /* MKMapView+MapKitPlugin.m in Sources */,
+				E60096E7170180EC00484C44 /* MKGeometry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

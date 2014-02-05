@@ -12,12 +12,12 @@
 #import <MapKit/MKTypes.h>
 
 @interface MKMultiPoint : MKShape {
-    CLLocationCoordinate2D *coordinates;
-    NSUInteger coordinateCount;
+	MKMapPoint *points;
+	NSUInteger pointCount;
 }
 
-@property (nonatomic, readonly) CLLocationCoordinate2D *coordinates;
-@property (nonatomic, readonly) NSUInteger coordinateCount;
+@property (nonatomic, readonly) MKMapPoint *points;
+@property (nonatomic, readonly) NSUInteger pointCount;
 
 - (void)getCoordinates:(CLLocationCoordinate2D *)coords range:(NSRange)range;
 
