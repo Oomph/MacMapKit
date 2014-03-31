@@ -60,7 +60,6 @@
     [webView setFrameLoadDelegate:nil];
     delegate = nil;
     [webView removeFromSuperview];
-    [webView autorelease];
     [locationManager stopUpdatingLocation];
     [locationManager release];
     [userLocation release];
