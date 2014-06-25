@@ -19,7 +19,7 @@
 {
     for (int i = range.location; i < range.location+range.length; i++)
     {
-        coords[i] = coordinates[i];
+        coords[i - range.location] = coordinates[i];
     }
 }
 
