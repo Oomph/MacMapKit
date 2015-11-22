@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKView.h>
+#import "MKView.h"
 #import <WebKit/WebKit.h>
 
 enum {

@@ -7,7 +7,7 @@
 //
 
 #import "MKCircleView.h"
-#import <MapKit/MKCircle.h>
+#import "MKCircle.h"
 
 @implementation MKCircleView
 

@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <CoreLocation/CLLocation.h>
 #import <WebKit/WebKit.h>
-#import <MapKit/MKTypes.h>
+#import "MKTypes.h"
 
 @class MKPlacemark;
 @protocol MKReverseGeocoderDelegate;

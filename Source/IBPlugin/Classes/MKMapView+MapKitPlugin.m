@@ -7,7 +7,7 @@
 //
 
 #import <InterfaceBuilderKit/InterfaceBuilderKit.h>
-#import <MapKit/MKMapView.h>
+#import "MKMapView.h"
 #import "MKMapViewAttributeInspector.h"
 
 @implementation MKMapView ( MapKitPlugin )

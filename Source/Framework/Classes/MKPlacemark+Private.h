@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKPlacemark.h>
+#import "MKPlacemark.h"
 
 @interface MKPlacemark (Private)
 

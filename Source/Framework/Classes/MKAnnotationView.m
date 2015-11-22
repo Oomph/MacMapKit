@@ -7,7 +7,7 @@
 //
 
 #import "MKAnnotationView.h"
-#import <MapKit/MKAnnotation.h>
+#import "MKAnnotation.h"
 
 
 

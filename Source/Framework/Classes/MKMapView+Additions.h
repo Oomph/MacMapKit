@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKMapView.h>
+#import "MKMapView.h"
 
 @interface MKMapView (Additions)
 

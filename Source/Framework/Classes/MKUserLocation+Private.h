@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKUserLocation.h>
+#import "MKUserLocation.h"
 
 @class CLLocation;
 

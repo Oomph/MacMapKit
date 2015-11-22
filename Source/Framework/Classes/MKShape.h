@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKAnnotation.h>
+#import "MKAnnotation.h"
 
 @interface MKShape : NSObject <MKAnnotation> {
     @package

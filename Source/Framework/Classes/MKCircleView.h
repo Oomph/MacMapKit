@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKOverlayPathView.h>
+#import "MKOverlayPathView.h"
 
 @class MKCircle;
 

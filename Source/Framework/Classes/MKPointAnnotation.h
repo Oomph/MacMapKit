@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKShape.h>
+#import "MKShape.h"
 #import <CoreLocation/CLLocation.h>
 
 @interface MKPointAnnotation : MKShape {

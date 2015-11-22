@@ -7,8 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKPolyline.h>
-#import <MapKit/MKOverlayPathView.h>
+#import "MKPolyline.h"
+#import "MKOverlayPathView.h"
 
 @interface MKPolylineView : MKOverlayPathView {
     NSArray *path;

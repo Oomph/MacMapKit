@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKAnnotation.h>
+#import "MKAnnotation.h"
 #import <CoreLocation/CLLocation.h>
 
 @interface MKPlacemark : NSObject <MKAnnotation> {
