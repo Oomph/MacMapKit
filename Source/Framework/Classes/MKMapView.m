@@ -135,6 +135,9 @@
 {
     WebScriptObject *webScriptObject = [webView windowScriptObject];
     NSString *json = [webScriptObject evaluateWebScript:@"getRegion()"];
+    if (![json isKindOfClass:[NSString class]]) {
+        return MKCoordinateRegionMake(CLLocationCoordinate2DMake(0, 0), MKCoordinateSpanMake(0, 0));
+    }
     NSDictionary *regionDict = [json JSONValue];
     
     NSNumber *centerLatitude = [regionDict valueForKeyPath:@"center.latitude"];
