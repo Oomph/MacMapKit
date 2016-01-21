@@ -9,14 +9,14 @@
 #import "MKMapView.h"
 #import "MKMapView+Private.h"
 #import "JSON.h"
-#import <MapKit/MKUserLocation.h>
+#import "MKUserLocation.h"
 #import "MKUserLocation+Private.h"
-#import <MapKit/MKCircleView.h>
-#import <MapKit/MKCircle.h>
-#import <MapKit/MKPolyline.h>
-#import <MapKit/MKPolygon.h>
-#import <MapKit/MKAnnotationView.h>
-#import <MapKit/MKPointAnnotation.h>
+#import "MKCircleView.h"
+#import "MKCircle.h"
+#import "MKPolyline.h"
+#import "MKPolygon.h"
+#import "MKAnnotationView.h"
+#import "MKPointAnnotation.h"
 #import "MKMapView+DelegateWrappers.h"
 #import "MKMapView+WebViewIntegration.h"
 #import "MKWebView.h"
@@ -60,7 +60,6 @@
     [webView setFrameLoadDelegate:nil];
     delegate = nil;
     [webView removeFromSuperview];
-    [webView autorelease];
     [locationManager stopUpdatingLocation];
     [locationManager release];
     [userLocation release];
@@ -136,6 +135,9 @@
 {
     WebScriptObject *webScriptObject = [webView windowScriptObject];
     NSString *json = [webScriptObject evaluateWebScript:@"getRegion()"];
+    if (![json isKindOfClass:[NSString class]]) {
+        return MKCoordinateRegionMake(CLLocationCoordinate2DMake(0, 0), MKCoordinateSpanMake(0, 0));
+    }
     NSDictionary *regionDict = [json JSONValue];
     
     NSNumber *centerLatitude = [regionDict valueForKeyPath:@"center.latitude"];

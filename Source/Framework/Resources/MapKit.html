@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&v=3.6"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&v=3.6"></script>
 
 <style type="text/css">
 
@@ -137,6 +137,7 @@ window.onwebkitanimationend =  function(event) {
     this.div_ = null;
     this.imageUrl_ = null;
     this.imageTag_ = null;
+    this.dropAnimation = true; // Assume we always want drop animation
     this.marker_ = null;
     this.calloutWrapper_ = null;
     this.calloutCanvas_ = null;
@@ -207,6 +208,10 @@ window.onwebkitanimationend =  function(event) {
               marker.setOptions({"zIndex": value});
               if (annotation.calloutWrapper_)
                 annotation.calloutWrapper_.style.zIndex = value;
+          }
+          else if (option == "dropAnimation")
+          {
+              annotation.dropAnimation = value;
           }
       }
   }
@@ -432,12 +437,12 @@ window.onwebkitanimationend =  function(event) {
     // the map's panes are now available for attaching
     // the overlay to the map via the DOM.
     var me = this;
-    
-
 
     // Create the DIV and set some basic attributes.
     var div = document.createElement('DIV');
-    div.className = "dropAnimation";
+    if (me.dropAnimation) {
+      div.className = "dropAnimation";
+    }
     div.style.borderStyle = "none";
     div.style.borderWidth = "0px";
     div.style.position = "absolute";

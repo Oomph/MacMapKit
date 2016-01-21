@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKShape.h>
-#import <MapKit/MKGeometry.h>
-#import <MapKit/MKTypes.h>
+#import "MKShape.h"
+#import "MKGeometry.h"
+#import "MKTypes.h"
 
 @interface MKMultiPoint : MKShape {
     CLLocationCoordinate2D *coordinates;

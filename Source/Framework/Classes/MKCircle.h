@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CoreLocation/CoreLocation.h>
-#import <MapKit/MKShape.h>
-#import <MapKit/MKOverlay.h>
-#import <MapKit/MKGeometry.h>
+#import "MKShape.h"
+#import "MKOverlay.h"
+#import "MKGeometry.h"
 
 @interface MKCircle : MKShape <MKOverlay> {
     @package

@@ -8,7 +8,7 @@
 
 #import "DemoAppApplicationDelegate.h"
 #import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
+#import "MapKit.h"
 
 @implementation DemoAppApplicationDelegate
 

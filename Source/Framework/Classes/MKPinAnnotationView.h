@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKAnnotationView.h>
+#import "MKAnnotationView.h"
 
 enum {
     MKPinAnnotationColorRed = 0,

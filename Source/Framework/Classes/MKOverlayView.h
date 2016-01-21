@@ -7,8 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MapKit/MKOverlay.h>
-#import <MapKit/MKView.h>
+#import "MKOverlay.h"
+#import "MKView.h"
 
 @interface MKOverlayView : MKView {
     id <MKOverlay> overlay;
