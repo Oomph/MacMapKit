@@ -8,7 +8,7 @@ MapKit for Mac implements nearly 100% of MK* functionality. It's been tested on 
 
 What's Provided
 ---------------
-There's currently a framework, an IBPlugin for XCode3 users, and a small demo application.
+There's currently a framework, an IBPlugin for Xcode3 users, and a small demo application.
 
 
 Documentation
